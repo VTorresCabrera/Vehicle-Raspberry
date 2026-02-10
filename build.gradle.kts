@@ -12,7 +12,7 @@ application {
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(25)
 }
 
 dependencies {
@@ -22,7 +22,14 @@ dependencies {
     implementation(libs.ktor.server.host.common)
     implementation(libs.ktor.server.netty)
     implementation(libs.logback.classic)
-    implementation(libs.ktor.server.config.yaml)
+
+    
+    // Exposed & Database
+    implementation("org.jetbrains.exposed:exposed-core:0.58.0")
+    implementation("org.jetbrains.exposed:exposed-dao:0.58.0")
+    implementation("org.jetbrains.exposed:exposed-jdbc:0.58.0")
+    implementation("org.mariadb.jdbc:mariadb-java-client:3.2.0")
+
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
 }

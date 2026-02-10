@@ -1,0 +1,38 @@
+### Get API Status
+GET http://localhost:8081/
+
+### Get All Vehicles
+GET http://localhost:8081/vehicles
+
+### Create Vehicle (Example)
+POST http://localhost:8081/vehicles
+Content-Type: application/json
+
+{
+    "id": "V001",
+    "marca": "Toyota",
+    "modelo": "Corolla",
+    "año": 2023,
+    "precio": 25000.0,
+    "kilometros": 0,
+    "potencia": 150,
+    "imagen": "default.png"
+}
+
+### Get Created Vehicle by ID
+GET http://localhost:8081/vehicles/V001
+
+### Get Created Vehicle by Brand
+GET http://localhost:8081/vehicles/brand/Toyota
+
+### Update Vehicle
+PUT http://localhost:8081/vehicles/V001
+Content-Type: application/json
+
+{
+    "precio": 24500.0,
+    "kilometros": 100
+}
+
+### Delete Vehicle
+DELETE http://localhost:8081/vehicles/V001
