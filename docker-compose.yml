@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: vehiculos-api:local
+    container_name: vehiculos-api
+    ports:
+      - "8081:8081"
+    environment:
+      - DB_URL=${DB_URL:-jdbc:mariadb://db:3306/dbVehicle}
+      - DB_USER=${DB_USER:-usuario}
+      - DB_PASSWORD=${DB_PASSWORD:-usuario}
+    restart: unless-stopped
+
+  db:
+    image: mariadb:11
+    container_name: vehiculos-db
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_DATABASE: dbVehicle
+      MARIADB_USER: usuario
+      MARIADB_PASSWORD: usuario
+      MARIADB_ROOT_PASSWORD: root
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  mariadb_data:

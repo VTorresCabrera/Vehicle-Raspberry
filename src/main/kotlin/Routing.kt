@@ -12,6 +12,9 @@ fun Application.configureRouting() {
         get("/") {
             call.respondText("Hello World!")
         }
+        get("/health") {
+            call.respond(mapOf("status" to "ok"))
+        }
         // Static plugin. Try to access `/static/index.html`
         staticResources("/static", "static")
     }

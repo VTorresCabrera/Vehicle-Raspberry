@@ -1,42 +1,99 @@
-# vehiculos-raspi
+# Vehículos API (Ktor) – Entrega 1
 
-This project was created using the [Ktor Project Generator](https://start.ktor.io).
+API REST en **Ktor (Kotlin)** para gestionar vehículos.  
+En esta **Entrega 1** el objetivo es tener la API **sin login/seguridad**, dockerizada y lista para desplegar después en Raspberry Pi.
 
-Here are some useful links to get you started:
+---
 
-- [Ktor Documentation](https://ktor.io/docs/home.html)
-- [Ktor GitHub page](https://github.com/ktorio/ktor)
-- The [Ktor Slack chat](https://app.slack.com/client/T09229ZC6/C0A974TJ9). You'll need to [request an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) to join.
+## Objetivo Entrega 1
+- API funcionando en local.
+- Endpoint de salud: `GET /health`.
+- CRUD de vehículos (sin autenticación).
+- Dockerfile para construir y ejecutar la API.
+- (Opcional según avance) Docker Compose con MariaDB para entorno local.
+- Pruebas de endpoints con Postman o curl.
 
-## Features
+---
 
-Here's a list of features included in this project:
+## Requisitos
+- **JDK 21**
+- **Docker** y **Docker Compose**
+- (Opcional) Postman
 
-| Name                                                                   | Description                                                                        |
-| ------------------------------------------------------------------------|------------------------------------------------------------------------------------ |
-| [Content Negotiation](https://start.ktor.io/p/content-negotiation)     | Provides automatic content conversion according to Content-Type and Accept headers |
-| [Routing](https://start.ktor.io/p/routing)                             | Provides a structured routing DSL                                                  |
-| [kotlinx.serialization](https://start.ktor.io/p/kotlinx-serialization) | Handles JSON serialization using kotlinx.serialization library                     |
-| [Static Content](https://start.ktor.io/p/static-content)               | Serves static files from defined locations                                         |
+---
 
-## Building & Running
+## Ejecutar en local (sin Docker)
+Desde la raíz del proyecto:
 
-To build or run the project, use one of the following tasks:
-
-| Task                                    | Description                                                          |
-| -----------------------------------------|---------------------------------------------------------------------- |
-| `./gradlew test`                        | Run the tests                                                        |
-| `./gradlew build`                       | Build everything                                                     |
-| `./gradlew buildFatJar`                 | Build an executable JAR of the server with all dependencies included |
-| `./gradlew buildImage`                  | Build the docker image to use with the fat JAR                       |
-| `./gradlew publishImageToLocalRegistry` | Publish the docker image locally                                     |
-| `./gradlew run`                         | Run the server                                                       |
-| `./gradlew runDocker`                   | Run using the local docker image                                     |
-
-If the server starts successfully, you'll see the following output:
-
-```
-2024-12-04 14:32:45.584 [main] INFO  Application - Application started in 0.303 seconds.
-2024-12-04 14:32:45.682 [main] INFO  Application - Responding at http://0.0.0.0:8080
+```bash
+./gradlew run
 ```
 
+Comprobar que está viva:
+
+```bash
+curl -i http://localhost:8081/health
+```
+
+## Ejecutar en local (con Docker)
+### Build de la imagen
+```bash
+docker build -t vehiculos-api:local .
+```
+
+### Ejecutar contenedor
+```bash
+docker run --rm -p 8081:8081 vehiculos-api:local
+```
+
+### Comprobar salud:
+```bash
+curl -i http://localhost:8081/health
+```
+
+## Ejecutar en local con Docker Compose (API + MariaDB)
+
+Útil si el backend ya está conectado a base de datos.
+
+1. **Crear tu archivo .env a partir del ejemplo (no se sube a Git):**
+```bash
+cp .env.example .env
+```
+
+2. **Levantar servicios:**
+```bash
+docker compose up -d
+```
+
+3. **Comprobar:**
+```bash
+docker ps
+curl -i http://localhost:8081/health
+```
+
+4. **Parar servicios:**
+```bash
+docker compose down
+```
+
+---
+
+## Endpoints
+
+- **GET /health** → devuelve el estado del servicio (200 + JSON).
+- **CRUD de vehículos** (cuando esté implementado):
+    - **GET /vehicles**
+    - **GET /vehicles/{id}**
+    - **POST /vehicles**
+    - **PUT /vehicles/{id}**
+    - **DELETE /vehicles/{id}**
+
+---
+
+## Configuración
+
+La configuración principal está en `src/main/resources/application.yaml`:
+- **host**: 0.0.0.0
+- **port**: 8081
+
+Variables de entorno (si se usa MariaDB en local) están documentadas en `.env.example`.
