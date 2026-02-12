@@ -62,7 +62,7 @@ cp .env.example .env
 
 2. **Levantar servicios:**
 ```bash
-docker compose up -d
+docker compose -f backend/docker-compose.yml up -d
 ```
 
 3. **Comprobar:**
@@ -73,7 +73,7 @@ curl -i http://localhost:8081/health
 
 4. **Parar servicios:**
 ```bash
-docker compose down
+docker compose -f backend/docker-compose.yml down
 ```
 
 ---

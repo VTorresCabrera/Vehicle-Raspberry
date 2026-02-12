@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    build: .
+    build: ..
     image: vehiculos-api:local
     container_name: vehiculos-api
     ports:
@@ -17,7 +17,7 @@ services:
     image: mariadb:11
     container_name: vehiculos-db
     ports:
-      - "3306:3306"
+      - "3307:3306"
     environment:
       MARIADB_DATABASE: dbVehicle
       MARIADB_USER: usuario

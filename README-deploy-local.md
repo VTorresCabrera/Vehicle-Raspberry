@@ -12,7 +12,7 @@ docker build -t vehiculos-api .
 
 ### Run with Docker Compose
 ```bash
-docker-compose up -d
+docker-compose -f backend/docker-compose.yml up -d
 ```
 
 ### Verify
@@ -22,5 +22,5 @@ curl -i http://localhost:8081/health
 
 ### Logs
 ```bash
-docker-compose logs -f app
+docker-compose -f backend/docker-compose.yml logs -f app
 ```
