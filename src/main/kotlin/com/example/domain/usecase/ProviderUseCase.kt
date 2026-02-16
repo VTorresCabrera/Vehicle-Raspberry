@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory
 
 object ProviderUseCase {
 
-    private val repository: VehicleRepository = MemoryVehicleRepository()
-    // private val repository: VehicleRepository = PersistenceVehicleRepository()
+    // private val repository: VehicleRepository = MemoryVehicleRepository()
+    private val repository: VehicleRepository = PersistenceVehicleRepository()
     val logger: Logger = LoggerFactory.getLogger("VehicleUseCaseLogger")
 
     private val getAllVehiclesUseCase = GetAllVehiclesUseCase(repository)
