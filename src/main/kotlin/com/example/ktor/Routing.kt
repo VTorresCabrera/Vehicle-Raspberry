@@ -2,6 +2,7 @@ package com.example.ktor
 
 import com.example.domain.models.UpdateUser
 import com.example.domain.models.UpdateVehicle
+import com.example.domain.models.LoginRequest
 import com.example.domain.models.User
 import com.example.domain.models.Vehicle
 import com.example.domain.usecase.ProviderUseCase
@@ -28,31 +29,28 @@ fun Application.configureRouting() {
 
         // LOGIN & REGISTER
         post("/login") {
-            val credentials = call.receive<User>() // Or a LoginRequest DTO, but usually simpler to reuse User or Map
-            // Actually, receive Map<String, String> is safer if User has non-nullable fields required like id
-            // But User model has 'id' which is not present in login request usually.
-            // Let's assume client sends partial json or I should use a DTO.
-            // For simplicity, let's try to parse as Map first or checks.
-            // Wait, Kotlin Serialization needs matching fields.
-            // If I use User, fields like 'id', 'username', etc might be required.
-            // Better to use specific login DTO or Map.
-            // Let's use Map.
             try {
-                // Since I didn't create LoginDTO, let's use a workaround or expected format
-                val map = call.receive<Map<String, String>>()
-                val email = map["email"]
-                val password = map["password"]
-                if (email != null && password != null) {
-                    val user = ProviderUseCase.getUserByEmail(email)
-                    if (user != null && BCrypt.checkpw(password, user.password)) {
-                         call.respond(user)
-                    } else {
-                        call.respond(HttpStatusCode.Unauthorized, "Invalid credentials")
-                    }
+                val loginRequest = call.receive<LoginRequest>()
+                val email = loginRequest.email
+                val password = loginRequest.password
+                
+                call.application.environment.log.info("Login attempt for email: $email")
+                val user = ProviderUseCase.getUserByEmail(email)
+                if (user != null) {
+                        call.application.environment.log.info("User found: ${user.username}")
+                        if (BCrypt.checkpw(password, user.password)) {
+                            call.application.environment.log.info("Password match!")
+                            call.respond(user)
+                        } else {
+                            call.application.environment.log.warn("Password mismatch for user: ${user.username}")
+                            call.respond(HttpStatusCode.Unauthorized, "Invalid credentials")
+                        }
                 } else {
-                    call.respond(HttpStatusCode.BadRequest, "Missing email or password")
+                    call.application.environment.log.warn("User not found for email: $email")
+                    call.respond(HttpStatusCode.Unauthorized, "Invalid credentials")
                 }
             } catch (e: Exception) {
+                call.application.environment.log.error("Login error: ${e.message}", e)
                 call.respond(HttpStatusCode.BadRequest, "Invalid request body")
             }
         }

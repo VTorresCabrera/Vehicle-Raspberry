@@ -21,10 +21,10 @@ curl -s -X POST "$BASE_URL/register" \
 }' | python3 -m json.tool
 
 echo -e "\n=== 3. Login User ==="
-LOGIN_RESP=$(curl -s -X POST "$BASE_URL/login" \
+LOGIN_RESP=$(curl -v -X POST "$BASE_URL/login" \
   -H "Content-Type: application/json" \
   -d '{"email": "gonzalo@test.com", "password": "securepass"}')
-echo "$LOGIN_RESP" | python3 -m json.tool
+echo "$LOGIN_RESP"
 
 echo -e "\n=== 4. Insert Vehicle for User ==="
 curl -s -X POST "$BASE_URL/users/$USER_ID/vehicles" \

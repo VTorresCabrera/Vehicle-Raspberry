@@ -2,6 +2,7 @@ package com.example.domain.models
 
 import kotlinx.serialization.Serializable
 
+@Serializable
 enum class Role {
     USER, ADMIN
 }
