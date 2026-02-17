@@ -12,6 +12,7 @@ object VehicleTable : IdTable<String>("Vehicle") {
     val kilometros = integer("kilometers")
     val potencia = integer("power")
     val imagen = varchar("image", 255).nullable()
+    val user = reference("user_id", UserTable)
 
     override val primaryKey = PrimaryKey(id)
 }

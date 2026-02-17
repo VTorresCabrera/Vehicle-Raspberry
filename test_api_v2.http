@@ -1,0 +1,100 @@
+### Variables Globales
+@baseUrl = http://localhost:8081
+@userId = user_test_v2
+@vehicleId = vehicle_test_v2
+
+### 1. Health Check
+GET {{baseUrl}}/health
+
+### 2. Registro de Usuario
+POST {{baseUrl}}/register
+Content-Type: application/json
+
+{
+  "id": "{{userId}}",
+  "username": "UsuarioTest",
+  "email": "test@v2.com",
+  "password": "password123",
+  "description": "Usuario de prueba para V2",
+  "phone": "600123456",
+  "role": "ADMIN",
+  "active": true
+}
+
+### 3. Login de Usuario
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "email": "test@v2.com",
+  "password": "password123"
+}
+
+### 4. Obtener todos los usuarios
+GET {{baseUrl}}/users
+
+### 5. Obtener un usuario por ID
+GET {{baseUrl}}/users/{{userId}}
+
+### 6. Actualizar Usuario
+PUT {{baseUrl}}/users/{{userId}}
+Content-Type: application/json
+
+{
+  "username": "UsuarioModificado",
+  "description": "Descripción actualizada"
+}
+
+### 7. Insertar Vehículo para el Usuario
+POST {{baseUrl}}/users/{{userId}}/vehicles
+Content-Type: application/json
+
+{
+  "id": "{{vehicleId}}",
+  "marca": "Toyota",
+  "modelo": "Corolla",
+  "año": 2023,
+  "precio": 28000.0,
+  "kilometros": 5000,
+  "potencia": 140,
+  "userId": "{{userId}}"
+}
+
+### 8. Insertar Otro Vehículo
+POST {{baseUrl}}/users/{{userId}}/vehicles
+Content-Type: application/json
+
+{
+  "id": "v2_extra",
+  "marca": "Ford",
+  "modelo": "Focus",
+  "año": 2020,
+  "precio": 15000.0,
+  "kilometros": 45000,
+  "potencia": 120,
+  "userId": "{{userId}}"
+}
+
+### 9. Listar Vehículos del Usuario
+GET {{baseUrl}}/users/{{userId}}/vehicles
+
+### 10. Obtener un Vehículo específico
+GET {{baseUrl}}/users/{{userId}}/vehicles/{{vehicleId}}
+
+### 11. Actualizar Vehículo
+PUT {{baseUrl}}/users/{{userId}}/vehicles/{{vehicleId}}
+Content-Type: application/json
+
+{
+  "precio": 27500.0,
+  "kilometros": 6000
+}
+
+### 12. Borrar un Vehículo específico
+DELETE {{baseUrl}}/users/{{userId}}/vehicles/{{vehicleId}}
+
+### 13. Borrar todos los vehículos del usuario
+DELETE {{baseUrl}}/users/{{userId}}/vehicles
+
+### 14. Borrar Usuario
+DELETE {{baseUrl}}/users/{{userId}}

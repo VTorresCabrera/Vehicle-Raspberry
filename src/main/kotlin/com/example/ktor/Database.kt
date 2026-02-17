@@ -1,10 +1,11 @@
-package com.example
+package com.example.ktor
 
 import io.ktor.server.application.*
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
 import com.example.data.persistence.models.VehicleTable
+import com.example.data.persistence.models.UserTable
 
 /*
 1.- Cuando llamamos a configureDatabases(), el objeto que devuelve lo gestiona
@@ -33,7 +34,7 @@ fun Application.configureDatabases(){
         )
         log.info ("He establecido bien la conexión")
         transaction {
-            SchemaUtils.create(VehicleTable)
+            SchemaUtils.create(UserTable, VehicleTable)
         }
     }catch (e: Exception){
         log.error("Database connection failed: ${e.message}")

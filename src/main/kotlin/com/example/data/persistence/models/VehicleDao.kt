@@ -14,4 +14,5 @@ class VehicleDao(id: EntityID<String>) : Entity<String>(id) {
     var kilometros by VehicleTable.kilometros
     var potencia by VehicleTable.potencia
     var imagen by VehicleTable.imagen
+    var user by UserDao referencedOn VehicleTable.user
 }

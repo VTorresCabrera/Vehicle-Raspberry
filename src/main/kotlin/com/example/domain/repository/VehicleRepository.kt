@@ -15,4 +15,7 @@ interface VehicleRepository {
     suspend fun updateVehicle(vehicle: UpdateVehicle, id: String) : Boolean
 
     suspend fun deleteVehicle(id: String) : Boolean
+
+    suspend fun getVehiclesByUserId(userId: String): List<Vehicle>
+    suspend fun deleteVehiclesByUserId(userId: String): Boolean
 }

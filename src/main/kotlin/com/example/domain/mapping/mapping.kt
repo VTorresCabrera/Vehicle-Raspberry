@@ -12,6 +12,7 @@ fun VehicleDaoToVehicle(vehicleDao: VehicleDao): Vehicle {
         precio = vehicleDao.precio,
         kilometros = vehicleDao.kilometros,
         potencia = vehicleDao.potencia,
-        imagen = vehicleDao.imagen
+        imagen = vehicleDao.imagen,
+        userId = vehicleDao.user.id.value
     )
 }

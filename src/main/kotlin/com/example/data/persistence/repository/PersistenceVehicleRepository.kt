@@ -2,6 +2,7 @@ package com.example.data.persistence.repository
 
 import com.example.data.persistence.models.VehicleDao
 import com.example.data.persistence.models.VehicleTable
+import com.example.data.persistence.models.UserTable
 import com.example.data.persistence.models.suspendTransaction
 import com.example.domain.mapping.VehicleDaoToVehicle
 import com.example.domain.models.UpdateVehicle
@@ -10,6 +11,7 @@ import com.example.domain.repository.VehicleRepository
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.deleteWhere
 import org.jetbrains.exposed.sql.update
+import com.example.data.persistence.models.UserDao
 
 class PersistenceVehicleRepository : VehicleRepository {
 
@@ -33,18 +35,25 @@ class PersistenceVehicleRepository : VehicleRepository {
 
     override suspend fun postVehicle(vehicle: Vehicle): Boolean {
         if (getVehicleById(vehicle.id) != null) return false
-        suspendTransaction {
-            VehicleDao.new(vehicle.id) {
-                this.marca = vehicle.marca
-                this.modelo = vehicle.modelo
-                this.año = vehicle.año
-                this.precio = vehicle.precio
-                this.kilometros = vehicle.kilometros
-                this.potencia = vehicle.potencia
-                this.imagen = vehicle.imagen
+        try {
+            suspendTransaction {
+                val userRef = UserDao.findById(vehicle.userId) ?: throw Exception("User not found")
+                VehicleDao.new(vehicle.id) {
+                    this.marca = vehicle.marca
+                    this.modelo = vehicle.modelo
+                    this.año = vehicle.año
+                    this.precio = vehicle.precio
+                    this.kilometros = vehicle.kilometros
+                    this.potencia = vehicle.potencia
+                    this.imagen = vehicle.imagen
+                    this.user = userRef
+                }
             }
+            return true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return false
         }
-        return true
     }
 
     override suspend fun updateVehicle(vehicle: UpdateVehicle, id: String): Boolean {
@@ -71,5 +80,13 @@ class PersistenceVehicleRepository : VehicleRepository {
     override suspend fun deleteVehicle(id: String): Boolean = suspendTransaction {
         val num = VehicleTable.deleteWhere { VehicleTable.id eq id }
         num == 1
+    }
+
+    override suspend fun getVehiclesByUserId(userId: String): List<Vehicle> = suspendTransaction {
+        VehicleDao.find { VehicleTable.user eq userId }.map(::VehicleDaoToVehicle)
+    }
+
+    override suspend fun deleteVehiclesByUserId(userId: String): Boolean = suspendTransaction {
+        VehicleTable.deleteWhere { VehicleTable.user eq userId } > 0
     }
 }

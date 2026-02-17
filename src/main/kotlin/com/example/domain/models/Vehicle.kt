@@ -10,5 +10,6 @@ data class Vehicle(
     val precio: Double,
     val kilometros: Int,
     val potencia: Int,
-    val imagen: String? = null
+    val imagen: String? = null,
+    val userId: String
 )
