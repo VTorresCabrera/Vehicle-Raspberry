@@ -10,5 +10,6 @@ fun main(args: Array<String>) {
 fun Application.module() {
     configureDatabases()
     configureSerialization()
+    configureHTTP()
     configureRouting()
 }

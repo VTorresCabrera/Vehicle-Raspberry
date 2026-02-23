@@ -27,6 +27,13 @@ fun Application.configureRouting() {
         // Static plugin
         staticResources("/static", "static")
 
+        // Global Vehicles (Marketplace)
+        route("/vehicles") {
+            get {
+                call.respond(ProviderUseCase.getAllVehicles())
+            }
+        }
+
         // LOGIN & REGISTER
         post("/login") {
             try {
