@@ -22,6 +22,8 @@ dependencies {
     implementation(libs.ktor.server.host.common)
     implementation(libs.ktor.server.netty)
     implementation(libs.ktor.server.cors)
+    implementation(libs.ktor.server.auth)
+    implementation(libs.ktor.server.auth.jwt)
     implementation(libs.logback.classic)
 
     // Exposed & Database

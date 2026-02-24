@@ -11,5 +11,6 @@ data class UpdateUser(
     val phone: String? = null,
     val urlImage: String? = null,
     val active: Boolean? = null,
-    val role: Role? = null
+    val role: Role? = null,
+    val token: String? = null
 )
