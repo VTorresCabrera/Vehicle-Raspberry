@@ -46,6 +46,7 @@ class PersistenceVehicleRepository : VehicleRepository {
                     this.kilometros = vehicle.kilometros
                     this.potencia = vehicle.potencia
                     this.imagen = vehicle.imagen
+                    this.status = vehicle.status
                     this.user = userRef
                 }
             }
@@ -68,6 +69,7 @@ class PersistenceVehicleRepository : VehicleRepository {
                     vehicle.kilometros?.let { stm[kilometros] = it }
                     vehicle.potencia?.let { stm[potencia] = it }
                     vehicle.imagen?.let { stm[imagen] = it }
+                    vehicle.status?.let { stm[status] = it }
                 }
             }
         } catch (e: Exception) {

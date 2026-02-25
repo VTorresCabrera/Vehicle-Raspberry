@@ -13,6 +13,7 @@ fun VehicleDaoToVehicle(vehicleDao: VehicleDao): Vehicle {
         kilometros = vehicleDao.kilometros,
         potencia = vehicleDao.potencia,
         imagen = vehicleDao.imagen,
+        status = vehicleDao.status,
         userId = vehicleDao.user.id.value
     )
 }

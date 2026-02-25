@@ -37,6 +37,24 @@ fun Application.configureRouting() {
             get {
                 call.respond(ProviderUseCase.getAllVehicles())
             }
+            
+            get("/brand/{brand}") {
+                val brand = call.parameters["brand"] ?: return@get call.respond(HttpStatusCode.BadRequest)
+                val vehicles = ProviderUseCase.getAllVehicles().filter { 
+                    it.marca.contains(brand, ignoreCase = true) 
+                }
+                call.respond(vehicles)
+            }
+        }
+
+        get("/vehicle/{id}") {
+            val id = call.parameters["id"] ?: return@get call.respond(HttpStatusCode.BadRequest)
+            val vehicle = ProviderUseCase.getVehicleById(id)
+            if (vehicle != null) {
+                call.respond(vehicle)
+            } else {
+                call.respond(HttpStatusCode.NotFound)
+            }
         }
 
         // LOGIN & REGISTER
@@ -197,9 +215,9 @@ fun Application.configureRouting() {
                             return@post
                         }
                         if (ProviderUseCase.insertVehicle(vehicle)) {
-                            call.respond(HttpStatusCode.Created, "Vehicle created")
+                            call.respond(HttpStatusCode.Created, mapOf("message" to "Vehicle created"))
                         } else {
-                            call.respond(HttpStatusCode.Conflict)
+                            call.respond(HttpStatusCode.Conflict, mapOf("message" to "Conflict"))
                         }
                     } catch (e: Exception) {
                         call.respond(HttpStatusCode.BadRequest, "Invalid Vehicle data: ${e.message}")
@@ -238,9 +256,9 @@ fun Application.configureRouting() {
                          val existing = ProviderUseCase.getVehicleById(vehicleId)
                          if (existing != null && existing.userId == userId) {
                              if (ProviderUseCase.updateVehicle(update, vehicleId)) {
-                                 call.respond(HttpStatusCode.OK, "Vehicle updated")
+                                 call.respond(HttpStatusCode.OK, mapOf("message" to "Vehicle updated"))
                              } else {
-                                 call.respond(HttpStatusCode.InternalServerError)
+                                 call.respond(HttpStatusCode.InternalServerError, mapOf("message" to "Update failed"))
                              }
                          } else {
                              call.respond(HttpStatusCode.NotFound)
@@ -252,11 +270,11 @@ fun Application.configureRouting() {
                          val vehicleId = call.parameters["vehicleId"]!!
                          val existing = ProviderUseCase.getVehicleById(vehicleId)
                          if (existing != null && existing.userId == userId) {
-                              if (ProviderUseCase.deleteVehicle(vehicleId)) {
-                                  call.respond(HttpStatusCode.OK, "Vehicle deleted")
-                              } else {
-                                  call.respond(HttpStatusCode.InternalServerError)
-                              }
+                               if (ProviderUseCase.deleteVehicle(vehicleId)) {
+                                   call.respond(HttpStatusCode.OK, mapOf("message" to "Vehicle deleted"))
+                               } else {
+                                   call.respond(HttpStatusCode.InternalServerError, mapOf("message" to "Delete failed"))
+                               }
                          } else {
                              call.respond(HttpStatusCode.NotFound)
                          }
