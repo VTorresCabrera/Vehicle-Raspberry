@@ -1,0 +1,2020 @@
+ Image img-vehicle-api-ktor-v2:latest Building 
+ Image img-vehicle-api-ktor-v2:latest Building 
+Sending build context to Docker daemon  65.35kB
+Step 1/17 : FROM eclipse-temurin:21-jdk AS build
+ ---> c880d7bdbcab
+Step 2/17 : WORKDIR /app
+ ---> Running in f9d27c70a75d
+ ---> Removed intermediate container f9d27c70a75d
+ ---> 506247c48ae6
+Step 3/17 : COPY gradle/ gradle/
+ ---> b094cb3243e7
+Step 4/17 : COPY gradlew build.gradle.kts settings.gradle.kts gradle.properties ./
+ ---> f3b591f8816d
+Step 5/17 : RUN chmod +x ./gradlew
+ ---> Running in 246cc52b660d
+ ---> Removed intermediate container 246cc52b660d
+ ---> ddba68309c66
+Step 6/17 : RUN ./gradlew dependencies --no-daemon
+ ---> Running in 9fad3f737ee9
+Downloading https://services.gradle.org/distributions/gradle-9.3.0-bin.zip
+.............10%.............20%.............30%.............40%.............50%.............60%.............70%.............80%.............90%.............100%
+
+Welcome to Gradle 9.3.0!
+
+Here are the highlights of this release:
+ - Test reporting improvements
+ - Error and warning improvements
+ - Build authoring improvements
+
+For more details see https://docs.gradle.org/9.3.0/release-notes.html
+
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.3.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Task :dependencies
+
+------------------------------------------------------------
+Root project 'vehiculos-raspi'
+------------------------------------------------------------
+
+annotationProcessor - Annotation processors and their dependencies for source set 'main'.
+No dependencies
+
+api - API dependencies for 'main'. (n)
+No dependencies
+
+apiElements - API elements for the 'main' feature. (n)
+No dependencies
+
+apiElements-published (n)
+No dependencies
+
+compileClasspath - Compile classpath for 'main'.
++--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0
+|    \--- org.jetbrains:annotations:13.0 -> 23.0.0
++--- io.ktor:ktor-bom:3.4.0
+|    +--- io.ktor:ktor-serialization-kotlinx-json:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth-jwt:3.4.0 (c)
+|    +--- io.ktor:ktor-server-content-negotiation:3.4.0 (c)
+|    +--- io.ktor:ktor-server-core:3.4.0 (c)
+|    +--- io.ktor:ktor-server-cors:3.4.0 (c)
+|    +--- io.ktor:ktor-server-host-common:3.4.0 (c)
+|    +--- io.ktor:ktor-server-netty:3.4.0 (c)
+|    +--- io.ktor:ktor-server-content-negotiation-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-core-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-kotlinx-json-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-host-common-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-netty-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-cors-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth-jwt-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-utils:3.4.0 (c)
+|    +--- io.ktor:ktor-http:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization:3.4.0 (c)
+|    +--- io.ktor:ktor-events:3.4.0 (c)
+|    +--- io.ktor:ktor-http-cio:3.4.0 (c)
+|    +--- io.ktor:ktor-websockets:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-kotlinx:3.4.0 (c)
+|    +--- io.ktor:ktor-client-core:3.4.0 (c)
+|    +--- io.ktor:ktor-server-sessions:3.4.0 (c)
+|    +--- io.ktor:ktor-utils-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-http-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-events-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-http-cio-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-websockets-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-kotlinx-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-client-core-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-sessions-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-io:3.4.0 (c)
+|    +--- io.ktor:ktor-network:3.4.0 (c)
+|    +--- io.ktor:ktor-websocket-serialization:3.4.0 (c)
+|    +--- io.ktor:ktor-sse:3.4.0 (c)
+|    +--- io.ktor:ktor-io-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-network-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-websocket-serialization-jvm:3.4.0 (c)
+|    \--- io.ktor:ktor-sse-jvm:3.4.0 (c)
++--- io.ktor:ktor-server-content-negotiation:3.4.0
+|    \--- io.ktor:ktor-server-content-negotiation-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2
+|         |    \--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.2
+|         |         +--- org.jetbrains:annotations:23.0.0
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.10.2
+|         |         |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.2 (c)
+|         |         |    \--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (c)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.0 -> 2.3.0 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0
+|         |    \--- io.ktor:ktor-server-core-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- com.typesafe:config:1.4.5
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-utils:3.4.0
+|         |         |    \--- io.ktor:ktor-utils-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-io:3.4.0
+|         |         |         |    \--- io.ktor:ktor-io-jvm:3.4.0
+|         |         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-io-core:0.8.2
+|         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-io-core-jvm:0.8.2
+|         |         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-io-bytestring:0.8.2
+|         |         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-io-bytestring-jvm:0.8.2
+|         |         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0
+|         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.9.0
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.9.0
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-json-io-jvm:1.9.0 (c)
+|         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.9.0 (c)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-http:3.4.0
+|         |         |    \--- io.ktor:ktor-http-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-serialization:3.4.0
+|         |         |    \--- io.ktor:ktor-serialization-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-websockets:3.4.0
+|         |         |         |    \--- io.ktor:ktor-websockets-jvm:3.4.0
+|         |         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         |         +--- io.ktor:ktor-http:3.4.0 (*)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-events:3.4.0
+|         |         |    \--- io.ktor:ktor-events-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-http-cio:3.4.0
+|         |         |    \--- io.ktor:ktor-http-cio-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- io.ktor:ktor-network:3.4.0
+|         |         |         |    \--- io.ktor:ktor-network-jvm:3.4.0
+|         |         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-http:3.4.0 (*)
+|         |         |         +--- io.ktor:ktor-io:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-websockets:3.4.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-reflect:2.3.0
+|         |         |    \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-core:3.4.0 (*)
++--- io.ktor:ktor-serialization-kotlinx-json:3.4.0
+|    \--- io.ktor:ktor-serialization-kotlinx-json-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-serialization-kotlinx:3.4.0
+|         |    \--- io.ktor:ktor-serialization-kotlinx-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-serialization:3.4.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0
+|         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.9.0
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.9.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         \--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.9.0
+|         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-io-jvm:1.9.0
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.9.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         \--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-host-common:3.4.0
+|    \--- io.ktor:ktor-server-host-common-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-netty:3.4.0
+|    \--- io.ktor:ktor-server-netty-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         +--- io.netty:netty-codec-http2:4.2.9.Final
+|         |    +--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-buffer:4.2.9.Final
+|         |    |    \--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-transport:4.2.9.Final
+|         |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    \--- io.netty:netty-resolver:4.2.9.Final
+|         |    |         \--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-codec-base:4.2.9.Final
+|         |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    \--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    +--- io.netty:netty-handler:4.2.9.Final
+|         |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    +--- io.netty:netty-resolver:4.2.9.Final (*)
+|         |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    |    +--- io.netty:netty-transport-native-unix-common:4.2.9.Final
+|         |    |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    |    \--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    |    \--- io.netty:netty-codec-base:4.2.9.Final (*)
+|         |    \--- io.netty:netty-codec-http:4.2.9.Final
+|         |         +--- io.netty:netty-common:4.2.9.Final
+|         |         +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         +--- io.netty:netty-codec-base:4.2.9.Final (*)
+|         |         +--- io.netty:netty-codec-compression:4.2.9.Final
+|         |         |    +--- io.netty:netty-common:4.2.9.Final
+|         |         |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         |    \--- io.netty:netty-codec-base:4.2.9.Final (*)
+|         |         \--- io.netty:netty-handler:4.2.9.Final (*)
+|         +--- org.eclipse.jetty.alpn:alpn-api:1.1.3.v20160715
+|         +--- io.netty:netty-transport-native-kqueue:4.2.9.Final
+|         |    +--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         |    \--- io.netty:netty-transport-classes-kqueue:4.2.9.Final
+|         |         +--- io.netty:netty-common:4.2.9.Final
+|         |         +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         \--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         +--- io.netty:netty-transport-native-epoll:4.2.9.Final
+|         |    +--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         |    \--- io.netty:netty-transport-classes-epoll:4.2.9.Final
+|         |         +--- io.netty:netty-common:4.2.9.Final
+|         |         +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         \--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-cors:3.4.0
+|    \--- io.ktor:ktor-server-cors-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-auth:3.4.0
+|    \--- io.ktor:ktor-server-auth-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         +--- io.ktor:ktor-client-core:3.4.0
+|         |    \--- io.ktor:ktor-client-core-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-http:3.4.0 (*)
+|         |         +--- io.ktor:ktor-http-cio:3.4.0 (*)
+|         |         +--- io.ktor:ktor-events:3.4.0 (*)
+|         |         +--- io.ktor:ktor-websocket-serialization:3.4.0
+|         |         |    \--- io.ktor:ktor-websocket-serialization-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-serialization:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-sse:3.4.0
+|         |         |    \--- io.ktor:ktor-sse-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- io.ktor:ktor-server-sessions:3.4.0
+|         |    \--- io.ktor:ktor-server-sessions-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-auth-jwt:3.4.0
+|    \--- io.ktor:ktor-server-auth-jwt-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- io.ktor:ktor-server-auth:3.4.0 (*)
+|         +--- com.auth0:java-jwt:4.5.0
+|         |    +--- com.fasterxml.jackson.core:jackson-core:2.15.4
+|         |    |    \--- com.fasterxml.jackson:jackson-bom:2.15.4
+|         |    |         +--- com.fasterxml.jackson.core:jackson-annotations:2.15.4 (c)
+|         |    |         +--- com.fasterxml.jackson.core:jackson-core:2.15.4 (c)
+|         |    |         \--- com.fasterxml.jackson.core:jackson-databind:2.15.4 (c)
+|         |    \--- com.fasterxml.jackson.core:jackson-databind:2.15.4
+|         |         +--- com.fasterxml.jackson.core:jackson-annotations:2.15.4
+|         |         |    \--- com.fasterxml.jackson:jackson-bom:2.15.4 (*)
+|         |         +--- com.fasterxml.jackson.core:jackson-core:2.15.4 (*)
+|         |         \--- com.fasterxml.jackson:jackson-bom:2.15.4 (*)
+|         +--- com.auth0:jwks-rsa:0.23.0
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- ch.qos.logback:logback-classic:1.4.14
+|    +--- ch.qos.logback:logback-core:1.4.14
+|    \--- org.slf4j:slf4j-api:2.0.7 -> 2.0.17
++--- org.jetbrains.exposed:exposed-core:0.58.0
+|    +--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.3.0 (*)
+|    +--- org.jetbrains.kotlin:kotlin-reflect:2.0.0 -> 2.3.0 (*)
+|    +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1 -> 1.10.2 (*)
+|    \--- org.slf4j:slf4j-api:2.0.9 -> 2.0.17
++--- org.jetbrains.exposed:exposed-dao:0.58.0
+|    +--- org.jetbrains.exposed:exposed-core:0.58.0 (*)
+|    \--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.3.0 (*)
++--- org.jetbrains.exposed:exposed-jdbc:0.58.0
+|    +--- org.jetbrains.exposed:exposed-core:0.58.0 (*)
+|    \--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.3.0 (*)
++--- org.mariadb.jdbc:mariadb-java-client:3.2.0
+|    \--- com.github.waffle:waffle-jna:3.2.0
+|         +--- net.java.dev.jna:jna:5.12.1
+|         +--- net.java.dev.jna:jna-platform:5.12.1
+|         |    \--- net.java.dev.jna:jna:5.12.1
+|         +--- org.slf4j:jcl-over-slf4j:1.7.36
+|         |    \--- org.slf4j:slf4j-api:1.7.36 -> 2.0.17
+|         +--- org.slf4j:slf4j-api:1.7.36 -> 2.0.17
+|         +--- com.github.ben-manes.caffeine:caffeine:2.9.3
+|         |    +--- org.checkerframework:checker-qual:3.19.0 -> 3.23.0
+|         |    \--- com.google.errorprone:error_prone_annotations:2.10.0
+|         \--- org.checkerframework:checker-qual:3.23.0
++--- com.h2database:h2:2.2.224
+\--- org.mindrot:jbcrypt:0.4
+
+compileOnly - Compile only dependencies for 'main'. (n)
+No dependencies
+
+default - Configuration for default artifacts. (n)
+No dependencies
+
+implementation - Implementation only dependencies for 'main'. (n)
++--- io.ktor:ktor-bom:3.4.0 (n)
++--- io.ktor:ktor-server-content-negotiation:3.4.0 (n)
++--- io.ktor:ktor-server-core:3.4.0 (n)
++--- io.ktor:ktor-serialization-kotlinx-json:3.4.0 (n)
++--- io.ktor:ktor-server-host-common:3.4.0 (n)
++--- io.ktor:ktor-server-netty:3.4.0 (n)
++--- io.ktor:ktor-server-cors:3.4.0 (n)
++--- io.ktor:ktor-server-auth:3.4.0 (n)
++--- io.ktor:ktor-server-auth-jwt:3.4.0 (n)
++--- ch.qos.logback:logback-classic:1.4.14 (n)
++--- org.jetbrains.exposed:exposed-core:0.58.0 (n)
++--- org.jetbrains.exposed:exposed-dao:0.58.0 (n)
++--- org.jetbrains.exposed:exposed-jdbc:0.58.0 (n)
++--- org.mariadb.jdbc:mariadb-java-client:3.2.0 (n)
++--- com.h2database:h2:2.2.224 (n)
+\--- org.mindrot:jbcrypt:0.4 (n)
+
+implementationDependenciesMetadata
+No dependencies
+
+kotlinBuildToolsApiClasspath
++--- org.jetbrains.kotlin:kotlin-build-tools-compat:2.3.0
+|    \--- org.jetbrains.kotlin:kotlin-tooling-core:2.3.0
+\--- org.jetbrains.kotlin:kotlin-build-tools-impl:{strictly 2.3.0} -> 2.3.0
+     +--- org.jetbrains.kotlin:kotlin-build-tools-api:2.3.0
+     +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0
+     |    \--- org.jetbrains:annotations:13.0
+     +--- org.jetbrains.kotlin:kotlin-compiler-embeddable:2.3.0
+     |    +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+     |    +--- org.jetbrains.kotlin:kotlin-script-runtime:2.3.0
+     |    +--- org.jetbrains.kotlin:kotlin-reflect:1.6.10
+     |    +--- org.jetbrains.kotlin:kotlin-daemon-embeddable:2.3.0
+     |    \--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.8.0
+     \--- org.jetbrains.kotlin:kotlin-compiler-runner:2.3.0
+          +--- org.jetbrains.kotlin:kotlin-daemon-client:2.3.0
+          |    \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.21 -> 2.3.0 (*)
+          +--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.8.0
+          \--- org.jetbrains.kotlin:kotlin-compiler-embeddable:2.3.0 (*)
+
+kotlinCompilerClasspath
+\--- org.jetbrains.kotlin:kotlin-compiler-embeddable:2.3.0
+     +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0
+     |    \--- org.jetbrains:annotations:13.0
+     +--- org.jetbrains.kotlin:kotlin-script-runtime:2.3.0
+     +--- org.jetbrains.kotlin:kotlin-reflect:1.6.10
+     +--- org.jetbrains.kotlin:kotlin-daemon-embeddable:2.3.0
+     \--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.8.0
+
+kotlinCompilerPluginClasspath
+No dependencies
+
+kotlinCompilerPluginClasspathMain - Kotlin compiler plugins for compilation
++--- org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:2.3.0
+|    +--- org.jetbrains.kotlin:kotlin-scripting-common:2.3.0
+|    |    \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0
+|    |         \--- org.jetbrains:annotations:13.0
+|    +--- org.jetbrains.kotlin:kotlin-scripting-jvm:2.3.0
+|    |    +--- org.jetbrains.kotlin:kotlin-script-runtime:2.3.0
+|    |    +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|    |    \--- org.jetbrains.kotlin:kotlin-scripting-common:2.3.0 (*)
+|    +--- org.jetbrains.kotlin:kotlin-scripting-compiler-impl-embeddable:2.3.0
+|    |    +--- org.jetbrains.kotlin:kotlin-scripting-common:2.3.0 (*)
+|    |    +--- org.jetbrains.kotlin:kotlin-scripting-jvm:2.3.0 (*)
+|    |    \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|    \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+\--- org.jetbrains.kotlin:kotlin-serialization-compiler-plugin-embeddable:2.3.0
+
+kotlinCompilerPluginClasspathTest - Kotlin compiler plugins for compilation
++--- org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:2.3.0
+|    +--- org.jetbrains.kotlin:kotlin-scripting-common:2.3.0
+|    |    \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0
+|    |         \--- org.jetbrains:annotations:13.0
+|    +--- org.jetbrains.kotlin:kotlin-scripting-jvm:2.3.0
+|    |    +--- org.jetbrains.kotlin:kotlin-script-runtime:2.3.0
+|    |    +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|    |    \--- org.jetbrains.kotlin:kotlin-scripting-common:2.3.0 (*)
+|    +--- org.jetbrains.kotlin:kotlin-scripting-compiler-impl-embeddable:2.3.0
+|    |    +--- org.jetbrains.kotlin:kotlin-scripting-common:2.3.0 (*)
+|    |    +--- org.jetbrains.kotlin:kotlin-scripting-jvm:2.3.0 (*)
+|    |    \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|    \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+\--- org.jetbrains.kotlin:kotlin-serialization-compiler-plugin-embeddable:2.3.0
+
+kotlinInternalAbiValidation
+\--- org.jetbrains.kotlin:abi-tools:2.3.0
+     +--- org.jetbrains.kotlin:abi-tools-api:2.3.0
+     +--- org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.0
+     |    \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0
+     |         \--- org.jetbrains:annotations:13.0
+     +--- org.jetbrains.kotlin:kotlin-klib-abi-reader:2.3.0
+     |    \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+     \--- io.github.java-diff-utils:java-diff-utils:4.12
+
+kotlinKlibCommonizerClasspath
+\--- org.jetbrains.kotlin:kotlin-klib-commonizer-embeddable:2.3.0
+     +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0
+     |    \--- org.jetbrains:annotations:13.0
+     \--- org.jetbrains.kotlin:kotlin-compiler-embeddable:2.3.0
+          +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+          +--- org.jetbrains.kotlin:kotlin-script-runtime:2.3.0
+          +--- org.jetbrains.kotlin:kotlin-reflect:1.6.10
+          +--- org.jetbrains.kotlin:kotlin-daemon-embeddable:2.3.0
+          \--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.8.0
+
+kotlinNativeCompilerPluginClasspath
+No dependencies
+
+kotlinScriptDef - Script filename extensions discovery classpath configuration (n)
+No dependencies
+
+kotlinScriptDefExtensions
+No dependencies
+
+mainSourceElements - List of source directories contained in the Main SourceSet. (n)
+No dependencies
+
+runtimeClasspath - Runtime classpath of 'main'.
++--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0
+|    \--- org.jetbrains:annotations:13.0 -> 23.0.0
++--- io.ktor:ktor-bom:3.4.0
+|    +--- io.ktor:ktor-serialization-kotlinx-json:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth-jwt:3.4.0 (c)
+|    +--- io.ktor:ktor-server-content-negotiation:3.4.0 (c)
+|    +--- io.ktor:ktor-server-core:3.4.0 (c)
+|    +--- io.ktor:ktor-server-cors:3.4.0 (c)
+|    +--- io.ktor:ktor-server-host-common:3.4.0 (c)
+|    +--- io.ktor:ktor-server-netty:3.4.0 (c)
+|    +--- io.ktor:ktor-server-content-negotiation-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-core-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-kotlinx-json-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-host-common-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-netty-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-cors-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth-jwt-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-utils:3.4.0 (c)
+|    +--- io.ktor:ktor-http:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization:3.4.0 (c)
+|    +--- io.ktor:ktor-events:3.4.0 (c)
+|    +--- io.ktor:ktor-http-cio:3.4.0 (c)
+|    +--- io.ktor:ktor-websockets:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-kotlinx:3.4.0 (c)
+|    +--- io.ktor:ktor-client-core:3.4.0 (c)
+|    +--- io.ktor:ktor-server-sessions:3.4.0 (c)
+|    +--- io.ktor:ktor-utils-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-http-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-events-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-http-cio-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-websockets-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-kotlinx-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-client-core-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-sessions-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-io:3.4.0 (c)
+|    +--- io.ktor:ktor-network:3.4.0 (c)
+|    +--- io.ktor:ktor-websocket-serialization:3.4.0 (c)
+|    +--- io.ktor:ktor-sse:3.4.0 (c)
+|    +--- io.ktor:ktor-io-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-network-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-websocket-serialization-jvm:3.4.0 (c)
+|    \--- io.ktor:ktor-sse-jvm:3.4.0 (c)
++--- io.ktor:ktor-server-content-negotiation:3.4.0
+|    \--- io.ktor:ktor-server-content-negotiation-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2
+|         |    \--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.2
+|         |         +--- org.jetbrains:annotations:23.0.0
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.10.2
+|         |         |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.2 (c)
+|         |         |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (c)
+|         |         |    \--- org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:1.10.2 (c)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.0 -> 2.3.0 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0
+|         |    \--- io.ktor:ktor-server-core-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- com.typesafe:config:1.4.5
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-utils:3.4.0
+|         |         |    \--- io.ktor:ktor-utils-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-io:3.4.0
+|         |         |         |    \--- io.ktor:ktor-io-jvm:3.4.0
+|         |         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-io-core:0.8.2
+|         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-io-core-jvm:0.8.2
+|         |         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-io-bytestring:0.8.2
+|         |         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-io-bytestring-jvm:0.8.2
+|         |         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0
+|         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.9.0
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.9.0
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-json-io-jvm:1.9.0 (c)
+|         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.9.0 (c)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-http:3.4.0
+|         |         |    \--- io.ktor:ktor-http-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-serialization:3.4.0
+|         |         |    \--- io.ktor:ktor-serialization-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-websockets:3.4.0
+|         |         |         |    \--- io.ktor:ktor-websockets-jvm:3.4.0
+|         |         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         |         +--- io.ktor:ktor-http:3.4.0 (*)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-events:3.4.0
+|         |         |    \--- io.ktor:ktor-events-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-http-cio:3.4.0
+|         |         |    \--- io.ktor:ktor-http-cio-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- io.ktor:ktor-network:3.4.0
+|         |         |         |    \--- io.ktor:ktor-network-jvm:3.4.0
+|         |         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-http:3.4.0 (*)
+|         |         |         +--- io.ktor:ktor-io:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-websockets:3.4.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-reflect:2.3.0
+|         |         |    \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         \--- org.fusesource.jansi:jansi:2.4.2
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-core:3.4.0 (*)
++--- io.ktor:ktor-serialization-kotlinx-json:3.4.0
+|    \--- io.ktor:ktor-serialization-kotlinx-json-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-serialization-kotlinx:3.4.0
+|         |    \--- io.ktor:ktor-serialization-kotlinx-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-serialization:3.4.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0
+|         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.9.0
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.9.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         \--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.9.0
+|         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-io-jvm:1.9.0
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.9.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (*)
+|         |         \--- org.jetbrains.kotlinx:kotlinx-io-core:0.6.0 -> 0.8.2 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-host-common:3.4.0
+|    \--- io.ktor:ktor-server-host-common-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-netty:3.4.0
+|    \--- io.ktor:ktor-server-netty-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         +--- io.netty:netty-codec-http2:4.2.9.Final
+|         |    +--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-buffer:4.2.9.Final
+|         |    |    \--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-transport:4.2.9.Final
+|         |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    \--- io.netty:netty-resolver:4.2.9.Final
+|         |    |         \--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-codec-base:4.2.9.Final
+|         |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    \--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    +--- io.netty:netty-handler:4.2.9.Final
+|         |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    +--- io.netty:netty-resolver:4.2.9.Final (*)
+|         |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    |    +--- io.netty:netty-transport-native-unix-common:4.2.9.Final
+|         |    |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    |    \--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    |    \--- io.netty:netty-codec-base:4.2.9.Final (*)
+|         |    \--- io.netty:netty-codec-http:4.2.9.Final
+|         |         +--- io.netty:netty-common:4.2.9.Final
+|         |         +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         +--- io.netty:netty-codec-base:4.2.9.Final (*)
+|         |         +--- io.netty:netty-codec-compression:4.2.9.Final
+|         |         |    +--- io.netty:netty-common:4.2.9.Final
+|         |         |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         |    \--- io.netty:netty-codec-base:4.2.9.Final (*)
+|         |         \--- io.netty:netty-handler:4.2.9.Final (*)
+|         +--- org.eclipse.jetty.alpn:alpn-api:1.1.3.v20160715
+|         +--- io.netty:netty-transport-native-kqueue:4.2.9.Final
+|         |    +--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         |    \--- io.netty:netty-transport-classes-kqueue:4.2.9.Final
+|         |         +--- io.netty:netty-common:4.2.9.Final
+|         |         +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         \--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         +--- io.netty:netty-transport-native-epoll:4.2.9.Final
+|         |    +--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         |    \--- io.netty:netty-transport-classes-epoll:4.2.9.Final
+|         |         +--- io.netty:netty-common:4.2.9.Final
+|         |         +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         \--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-cors:3.4.0
+|    \--- io.ktor:ktor-server-cors-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-auth:3.4.0
+|    \--- io.ktor:ktor-server-auth-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         +--- io.ktor:ktor-client-core:3.4.0
+|         |    \--- io.ktor:ktor-client-core-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-http:3.4.0 (*)
+|         |         +--- io.ktor:ktor-http-cio:3.4.0 (*)
+|         |         +--- io.ktor:ktor-events:3.4.0 (*)
+|         |         +--- io.ktor:ktor-websocket-serialization:3.4.0
+|         |         |    \--- io.ktor:ktor-websocket-serialization-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-serialization:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-sse:3.4.0
+|         |         |    \--- io.ktor:ktor-sse-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         \--- org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:1.10.2
+|         |              +--- org.slf4j:slf4j-api:1.7.32 -> 2.0.17
+|         |              +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |              +--- org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.10.2 (*)
+|         |              \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.0 -> 2.3.0 (*)
+|         +--- io.ktor:ktor-server-sessions:3.4.0
+|         |    \--- io.ktor:ktor-server-sessions-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-auth-jwt:3.4.0
+|    \--- io.ktor:ktor-server-auth-jwt-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- io.ktor:ktor-server-auth:3.4.0 (*)
+|         +--- com.auth0:java-jwt:4.5.0
+|         |    +--- com.fasterxml.jackson.core:jackson-core:2.15.4
+|         |    |    \--- com.fasterxml.jackson:jackson-bom:2.15.4
+|         |    |         +--- com.fasterxml.jackson.core:jackson-annotations:2.15.4 (c)
+|         |    |         +--- com.fasterxml.jackson.core:jackson-core:2.15.4 (c)
+|         |    |         \--- com.fasterxml.jackson.core:jackson-databind:2.15.4 (c)
+|         |    \--- com.fasterxml.jackson.core:jackson-databind:2.15.4
+|         |         +--- com.fasterxml.jackson.core:jackson-annotations:2.15.4
+|         |         |    \--- com.fasterxml.jackson:jackson-bom:2.15.4 (*)
+|         |         +--- com.fasterxml.jackson.core:jackson-core:2.15.4 (*)
+|         |         \--- com.fasterxml.jackson:jackson-bom:2.15.4 (*)
+|         +--- com.auth0:jwks-rsa:0.23.0
+|         |    +--- com.fasterxml.jackson.core:jackson-databind:2.15.0 -> 2.15.4 (*)
+|         |    \--- com.google.guava:guava:32.1.2-jre
+|         |         +--- com.google.guava:guava-parent:32.1.2-jre
+|         |         |    +--- com.google.code.findbugs:jsr305:3.0.2 (c)
+|         |         |    +--- org.checkerframework:checker-qual:3.33.0 (c)
+|         |         |    \--- com.google.errorprone:error_prone_annotations:2.18.0 (c)
+|         |         +--- com.google.guava:failureaccess:1.0.1
+|         |         +--- com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava
+|         |         +--- com.google.code.findbugs:jsr305 -> 3.0.2
+|         |         +--- org.checkerframework:checker-qual -> 3.33.0
+|         |         \--- com.google.errorprone:error_prone_annotations -> 2.18.0
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- ch.qos.logback:logback-classic:1.4.14
+|    +--- ch.qos.logback:logback-core:1.4.14
+|    \--- org.slf4j:slf4j-api:2.0.7 -> 2.0.17
++--- org.jetbrains.exposed:exposed-core:0.58.0
+|    +--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.3.0 (*)
+|    +--- org.jetbrains.kotlin:kotlin-reflect:2.0.0 -> 2.3.0 (*)
+|    +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1 -> 1.10.2 (*)
+|    \--- org.slf4j:slf4j-api:2.0.9 -> 2.0.17
++--- org.jetbrains.exposed:exposed-dao:0.58.0
+|    +--- org.jetbrains.exposed:exposed-core:0.58.0 (*)
+|    \--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.3.0 (*)
++--- org.jetbrains.exposed:exposed-jdbc:0.58.0
+|    +--- org.jetbrains.exposed:exposed-core:0.58.0 (*)
+|    \--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.3.0 (*)
++--- org.mariadb.jdbc:mariadb-java-client:3.2.0
+|    \--- com.github.waffle:waffle-jna:3.2.0
+|         +--- net.java.dev.jna:jna:5.12.1
+|         +--- net.java.dev.jna:jna-platform:5.12.1
+|         |    \--- net.java.dev.jna:jna:5.12.1
+|         +--- org.slf4j:jcl-over-slf4j:1.7.36
+|         |    \--- org.slf4j:slf4j-api:1.7.36 -> 2.0.17
+|         +--- org.slf4j:slf4j-api:1.7.36 -> 2.0.17
+|         +--- com.github.ben-manes.caffeine:caffeine:2.9.3
+|         |    +--- org.checkerframework:checker-qual:3.19.0 -> 3.33.0
+|         |    \--- com.google.errorprone:error_prone_annotations:2.10.0 -> 2.18.0
+|         \--- org.checkerframework:checker-qual:3.23.0 -> 3.33.0
++--- com.h2database:h2:2.2.224
+\--- org.mindrot:jbcrypt:0.4
+
+runtimeElements - Runtime elements for the 'main' feature. (n)
+No dependencies
+
+runtimeElements-published (n)
+No dependencies
+
+runtimeOnly - Runtime only dependencies for 'main'. (n)
+No dependencies
+
+shadow
+No dependencies
+
+shadowRuntimeElements (n)
+No dependencies
+
+testAnnotationProcessor - Annotation processors and their dependencies for source set 'test'.
+No dependencies
+
+testApi - API dependencies for 'test'. (n)
+No dependencies
+
+testCompileClasspath - Compile classpath for 'test'.
++--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0
+|    \--- org.jetbrains:annotations:13.0 -> 23.0.0
++--- io.ktor:ktor-bom:3.4.0
+|    +--- io.ktor:ktor-serialization-kotlinx-json:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth-jwt:3.4.0 (c)
+|    +--- io.ktor:ktor-server-content-negotiation:3.4.0 (c)
+|    +--- io.ktor:ktor-server-core:3.4.0 (c)
+|    +--- io.ktor:ktor-server-cors:3.4.0 (c)
+|    +--- io.ktor:ktor-server-host-common:3.4.0 (c)
+|    +--- io.ktor:ktor-server-netty:3.4.0 (c)
+|    +--- io.ktor:ktor-server-test-host:3.4.0 (c)
+|    +--- io.ktor:ktor-server-content-negotiation-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-core-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-kotlinx-json-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-host-common-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-netty-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-cors-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth-jwt-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-test-host-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-utils:3.4.0 (c)
+|    +--- io.ktor:ktor-http:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization:3.4.0 (c)
+|    +--- io.ktor:ktor-events:3.4.0 (c)
+|    +--- io.ktor:ktor-http-cio:3.4.0 (c)
+|    +--- io.ktor:ktor-websockets:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-kotlinx:3.4.0 (c)
+|    +--- io.ktor:ktor-client-core:3.4.0 (c)
+|    +--- io.ktor:ktor-server-sessions:3.4.0 (c)
+|    +--- io.ktor:ktor-network-tls:3.4.0 (c)
+|    +--- io.ktor:ktor-client-apache5:3.4.0 (c)
+|    +--- io.ktor:ktor-network-tls-certificates:3.4.0 (c)
+|    +--- io.ktor:ktor-server-call-logging:3.4.0 (c)
+|    +--- io.ktor:ktor-server-websockets:3.4.0 (c)
+|    +--- io.ktor:ktor-client-cio:3.4.0 (c)
+|    +--- io.ktor:ktor-test-dispatcher:3.4.0 (c)
+|    +--- io.ktor:ktor-utils-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-http-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-events-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-http-cio-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-websockets-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-kotlinx-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-client-core-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-sessions-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-network-tls-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-client-apache5-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-network-tls-certificates-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-call-logging-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-websockets-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-client-cio-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-test-dispatcher-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-io:3.4.0 (c)
+|    +--- io.ktor:ktor-network:3.4.0 (c)
+|    +--- io.ktor:ktor-websocket-serialization:3.4.0 (c)
+|    +--- io.ktor:ktor-sse:3.4.0 (c)
+|    +--- io.ktor:ktor-io-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-network-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-websocket-serialization-jvm:3.4.0 (c)
+|    \--- io.ktor:ktor-sse-jvm:3.4.0 (c)
++--- io.ktor:ktor-server-content-negotiation:3.4.0
+|    \--- io.ktor:ktor-server-content-negotiation-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2
+|         |    \--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.2
+|         |         +--- org.jetbrains:annotations:23.0.0
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.10.2
+|         |         |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.2 (c)
+|         |         |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (c)
+|         |         |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2 (c)
+|         |         |    \--- org.jetbrains.kotlinx:kotlinx-coroutines-test-jvm:1.10.2 (c)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.0 -> 2.3.0 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0
+|         |    \--- io.ktor:ktor-server-core-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- com.typesafe:config:1.4.5
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-utils:3.4.0
+|         |         |    \--- io.ktor:ktor-utils-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-io:3.4.0
+|         |         |         |    \--- io.ktor:ktor-io-jvm:3.4.0
+|         |         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-io-core:0.8.2
+|         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-io-core-jvm:0.8.2
+|         |         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-io-bytestring:0.8.2
+|         |         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-io-bytestring-jvm:0.8.2
+|         |         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0
+|         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.9.0
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.9.0
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-json-io-jvm:1.9.0 (c)
+|         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.9.0 (c)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-http:3.4.0
+|         |         |    \--- io.ktor:ktor-http-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-serialization:3.4.0
+|         |         |    \--- io.ktor:ktor-serialization-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-websockets:3.4.0
+|         |         |         |    \--- io.ktor:ktor-websockets-jvm:3.4.0
+|         |         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         |         +--- io.ktor:ktor-http:3.4.0 (*)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-events:3.4.0
+|         |         |    \--- io.ktor:ktor-events-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-http-cio:3.4.0
+|         |         |    \--- io.ktor:ktor-http-cio-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- io.ktor:ktor-network:3.4.0
+|         |         |         |    \--- io.ktor:ktor-network-jvm:3.4.0
+|         |         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-http:3.4.0 (*)
+|         |         |         +--- io.ktor:ktor-io:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-websockets:3.4.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-reflect:2.3.0
+|         |         |    \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-core:3.4.0 (*)
++--- io.ktor:ktor-serialization-kotlinx-json:3.4.0
+|    \--- io.ktor:ktor-serialization-kotlinx-json-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-serialization-kotlinx:3.4.0
+|         |    \--- io.ktor:ktor-serialization-kotlinx-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-serialization:3.4.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0
+|         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.9.0
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.9.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         \--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.9.0
+|         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-io-jvm:1.9.0
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.9.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         \--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-host-common:3.4.0
+|    \--- io.ktor:ktor-server-host-common-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-netty:3.4.0
+|    \--- io.ktor:ktor-server-netty-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         +--- io.netty:netty-codec-http2:4.2.9.Final
+|         |    +--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-buffer:4.2.9.Final
+|         |    |    \--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-transport:4.2.9.Final
+|         |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    \--- io.netty:netty-resolver:4.2.9.Final
+|         |    |         \--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-codec-base:4.2.9.Final
+|         |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    \--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    +--- io.netty:netty-handler:4.2.9.Final
+|         |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    +--- io.netty:netty-resolver:4.2.9.Final (*)
+|         |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    |    +--- io.netty:netty-transport-native-unix-common:4.2.9.Final
+|         |    |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    |    \--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    |    \--- io.netty:netty-codec-base:4.2.9.Final (*)
+|         |    \--- io.netty:netty-codec-http:4.2.9.Final
+|         |         +--- io.netty:netty-common:4.2.9.Final
+|         |         +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         +--- io.netty:netty-codec-base:4.2.9.Final (*)
+|         |         +--- io.netty:netty-codec-compression:4.2.9.Final
+|         |         |    +--- io.netty:netty-common:4.2.9.Final
+|         |         |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         |    \--- io.netty:netty-codec-base:4.2.9.Final (*)
+|         |         \--- io.netty:netty-handler:4.2.9.Final (*)
+|         +--- org.eclipse.jetty.alpn:alpn-api:1.1.3.v20160715
+|         +--- io.netty:netty-transport-native-kqueue:4.2.9.Final
+|         |    +--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         |    \--- io.netty:netty-transport-classes-kqueue:4.2.9.Final
+|         |         +--- io.netty:netty-common:4.2.9.Final
+|         |         +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         \--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         +--- io.netty:netty-transport-native-epoll:4.2.9.Final
+|         |    +--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         |    \--- io.netty:netty-transport-classes-epoll:4.2.9.Final
+|         |         +--- io.netty:netty-common:4.2.9.Final
+|         |         +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         \--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-cors:3.4.0
+|    \--- io.ktor:ktor-server-cors-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-auth:3.4.0
+|    \--- io.ktor:ktor-server-auth-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         +--- io.ktor:ktor-client-core:3.4.0
+|         |    \--- io.ktor:ktor-client-core-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-http:3.4.0 (*)
+|         |         +--- io.ktor:ktor-http-cio:3.4.0 (*)
+|         |         +--- io.ktor:ktor-events:3.4.0 (*)
+|         |         +--- io.ktor:ktor-websocket-serialization:3.4.0
+|         |         |    \--- io.ktor:ktor-websocket-serialization-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-serialization:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-sse:3.4.0
+|         |         |    \--- io.ktor:ktor-sse-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- io.ktor:ktor-server-sessions:3.4.0
+|         |    \--- io.ktor:ktor-server-sessions-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-auth-jwt:3.4.0
+|    \--- io.ktor:ktor-server-auth-jwt-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- io.ktor:ktor-server-auth:3.4.0 (*)
+|         +--- com.auth0:java-jwt:4.5.0
+|         |    +--- com.fasterxml.jackson.core:jackson-core:2.15.4
+|         |    |    \--- com.fasterxml.jackson:jackson-bom:2.15.4
+|         |    |         +--- com.fasterxml.jackson.core:jackson-annotations:2.15.4 (c)
+|         |    |         +--- com.fasterxml.jackson.core:jackson-core:2.15.4 (c)
+|         |    |         \--- com.fasterxml.jackson.core:jackson-databind:2.15.4 (c)
+|         |    \--- com.fasterxml.jackson.core:jackson-databind:2.15.4
+|         |         +--- com.fasterxml.jackson.core:jackson-annotations:2.15.4
+|         |         |    \--- com.fasterxml.jackson:jackson-bom:2.15.4 (*)
+|         |         +--- com.fasterxml.jackson.core:jackson-core:2.15.4 (*)
+|         |         \--- com.fasterxml.jackson:jackson-bom:2.15.4 (*)
+|         +--- com.auth0:jwks-rsa:0.23.0
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- ch.qos.logback:logback-classic:1.4.14
+|    +--- ch.qos.logback:logback-core:1.4.14
+|    \--- org.slf4j:slf4j-api:2.0.7 -> 2.0.17
++--- org.jetbrains.exposed:exposed-core:0.58.0
+|    +--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.3.0 (*)
+|    +--- org.jetbrains.kotlin:kotlin-reflect:2.0.0 -> 2.3.0 (*)
+|    +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1 -> 1.10.2 (*)
+|    \--- org.slf4j:slf4j-api:2.0.9 -> 2.0.17
++--- org.jetbrains.exposed:exposed-dao:0.58.0
+|    +--- org.jetbrains.exposed:exposed-core:0.58.0 (*)
+|    \--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.3.0 (*)
++--- org.jetbrains.exposed:exposed-jdbc:0.58.0
+|    +--- org.jetbrains.exposed:exposed-core:0.58.0 (*)
+|    \--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.3.0 (*)
++--- org.mariadb.jdbc:mariadb-java-client:3.2.0
+|    \--- com.github.waffle:waffle-jna:3.2.0
+|         +--- net.java.dev.jna:jna:5.12.1
+|         +--- net.java.dev.jna:jna-platform:5.12.1
+|         |    \--- net.java.dev.jna:jna:5.12.1
+|         +--- org.slf4j:jcl-over-slf4j:1.7.36
+|         |    \--- org.slf4j:slf4j-api:1.7.36 -> 2.0.17
+|         +--- org.slf4j:slf4j-api:1.7.36 -> 2.0.17
+|         +--- com.github.ben-manes.caffeine:caffeine:2.9.3
+|         |    +--- org.checkerframework:checker-qual:3.19.0 -> 3.23.0
+|         |    \--- com.google.errorprone:error_prone_annotations:2.10.0
+|         \--- org.checkerframework:checker-qual:3.23.0
++--- com.h2database:h2:2.2.224
++--- org.mindrot:jbcrypt:0.4
++--- io.ktor:ktor-server-test-host:3.4.0
+|    \--- io.ktor:ktor-server-test-host-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- io.ktor:ktor-network-tls:3.4.0
+|         |    \--- io.ktor:ktor-network-tls-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-http:3.4.0 (*)
+|         |         +--- io.ktor:ktor-network:3.4.0 (*)
+|         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- io.ktor:ktor-client-apache5:3.4.0
+|         |    \--- io.ktor:ktor-client-apache5-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- io.ktor:ktor-client-core:3.4.0 (*)
+|         |         +--- org.apache.httpcomponents.client5:httpclient5:5.5.1
+|         |         |    +--- org.apache.httpcomponents.core5:httpcore5:5.3.6
+|         |         |    +--- org.apache.httpcomponents.core5:httpcore5-h2:5.3.6
+|         |         |    |    \--- org.apache.httpcomponents.core5:httpcore5:5.3.6
+|         |         |    \--- org.slf4j:slf4j-api:1.7.36 -> 2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- io.ktor:ktor-network-tls-certificates:3.4.0
+|         |    \--- io.ktor:ktor-network-tls-certificates-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- io.ktor:ktor-network-tls:3.4.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- io.ktor:ktor-server-call-logging:3.4.0
+|         |    \--- io.ktor:ktor-server-call-logging-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- io.ktor:ktor-server-websockets:3.4.0
+|         |    \--- io.ktor:ktor-server-websockets-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         |         +--- io.ktor:ktor-websockets:3.4.0 (*)
+|         |         +--- io.ktor:ktor-websocket-serialization:3.4.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-client-cio:3.4.0
+|         |    \--- io.ktor:ktor-client-cio-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-client-core:3.4.0 (*)
+|         |         +--- io.ktor:ktor-http-cio:3.4.0 (*)
+|         |         +--- io.ktor:ktor-websockets:3.4.0 (*)
+|         |         +--- io.ktor:ktor-network-tls:3.4.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         +--- io.ktor:ktor-client-core:3.4.0 (*)
+|         +--- io.ktor:ktor-test-dispatcher:3.4.0
+|         |    \--- io.ktor:ktor-test-dispatcher-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2
+|         |         |    \--- org.jetbrains.kotlinx:kotlinx-coroutines-test-jvm:1.10.2
+|         |         |         +--- org.jetbrains:annotations:23.0.0
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.10.2 (*)
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.0 -> 2.3.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+\--- org.jetbrains.kotlin:kotlin-test-junit:2.3.0
+     +--- org.jetbrains.kotlin:kotlin-test:2.3.0
+     |    \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+     \--- junit:junit:4.13.2
+          \--- org.hamcrest:hamcrest-core:1.3
+
+testCompileOnly - Compile only dependencies for 'test'. (n)
+No dependencies
+
+testImplementation - Implementation only dependencies for 'test'. (n)
++--- io.ktor:ktor-server-test-host:3.4.0 (n)
+\--- org.jetbrains.kotlin:kotlin-test-junit:2.3.0 (n)
+
+testImplementationDependenciesMetadata
+No dependencies
+
+testKotlinScriptDef - Script filename extensions discovery classpath configuration (n)
+No dependencies
+
+testKotlinScriptDefExtensions
+No dependencies
+
+testRuntimeClasspath - Runtime classpath of 'test'.
++--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0
+|    \--- org.jetbrains:annotations:13.0 -> 23.0.0
++--- io.ktor:ktor-bom:3.4.0
+|    +--- io.ktor:ktor-serialization-kotlinx-json:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth-jwt:3.4.0 (c)
+|    +--- io.ktor:ktor-server-content-negotiation:3.4.0 (c)
+|    +--- io.ktor:ktor-server-core:3.4.0 (c)
+|    +--- io.ktor:ktor-server-cors:3.4.0 (c)
+|    +--- io.ktor:ktor-server-host-common:3.4.0 (c)
+|    +--- io.ktor:ktor-server-netty:3.4.0 (c)
+|    +--- io.ktor:ktor-server-test-host:3.4.0 (c)
+|    +--- io.ktor:ktor-server-content-negotiation-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-core-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-kotlinx-json-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-host-common-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-netty-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-cors-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-auth-jwt-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-test-host-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-utils:3.4.0 (c)
+|    +--- io.ktor:ktor-http:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization:3.4.0 (c)
+|    +--- io.ktor:ktor-events:3.4.0 (c)
+|    +--- io.ktor:ktor-http-cio:3.4.0 (c)
+|    +--- io.ktor:ktor-websockets:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-kotlinx:3.4.0 (c)
+|    +--- io.ktor:ktor-client-core:3.4.0 (c)
+|    +--- io.ktor:ktor-server-sessions:3.4.0 (c)
+|    +--- io.ktor:ktor-network-tls:3.4.0 (c)
+|    +--- io.ktor:ktor-client-apache5:3.4.0 (c)
+|    +--- io.ktor:ktor-network-tls-certificates:3.4.0 (c)
+|    +--- io.ktor:ktor-server-call-logging:3.4.0 (c)
+|    +--- io.ktor:ktor-server-websockets:3.4.0 (c)
+|    +--- io.ktor:ktor-client-cio:3.4.0 (c)
+|    +--- io.ktor:ktor-test-dispatcher:3.4.0 (c)
+|    +--- io.ktor:ktor-utils-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-http-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-events-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-http-cio-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-websockets-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-serialization-kotlinx-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-client-core-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-sessions-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-network-tls-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-client-apache5-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-network-tls-certificates-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-call-logging-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-server-websockets-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-client-cio-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-test-dispatcher-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-io:3.4.0 (c)
+|    +--- io.ktor:ktor-network:3.4.0 (c)
+|    +--- io.ktor:ktor-websocket-serialization:3.4.0 (c)
+|    +--- io.ktor:ktor-sse:3.4.0 (c)
+|    +--- io.ktor:ktor-io-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-network-jvm:3.4.0 (c)
+|    +--- io.ktor:ktor-websocket-serialization-jvm:3.4.0 (c)
+|    \--- io.ktor:ktor-sse-jvm:3.4.0 (c)
++--- io.ktor:ktor-server-content-negotiation:3.4.0
+|    \--- io.ktor:ktor-server-content-negotiation-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2
+|         |    \--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.2
+|         |         +--- org.jetbrains:annotations:23.0.0
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.10.2
+|         |         |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.2 (c)
+|         |         |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (c)
+|         |         |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-debug:1.10.2 (c)
+|         |         |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:1.10.2 (c)
+|         |         |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2 (c)
+|         |         |    \--- org.jetbrains.kotlinx:kotlinx-coroutines-test-jvm:1.10.2 (c)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.0 -> 2.3.0 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0
+|         |    \--- io.ktor:ktor-server-core-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- com.typesafe:config:1.4.5
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-utils:3.4.0
+|         |         |    \--- io.ktor:ktor-utils-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-io:3.4.0
+|         |         |         |    \--- io.ktor:ktor-io-jvm:3.4.0
+|         |         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-io-core:0.8.2
+|         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-io-core-jvm:0.8.2
+|         |         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-io-bytestring:0.8.2
+|         |         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-io-bytestring-jvm:0.8.2
+|         |         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0
+|         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.9.0
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.9.0
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (c)
+|         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-json-io-jvm:1.9.0 (c)
+|         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.9.0 (c)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-http:3.4.0
+|         |         |    \--- io.ktor:ktor-http-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-serialization:3.4.0
+|         |         |    \--- io.ktor:ktor-serialization-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-websockets:3.4.0
+|         |         |         |    \--- io.ktor:ktor-websockets-jvm:3.4.0
+|         |         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         |         +--- io.ktor:ktor-http:3.4.0 (*)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-events:3.4.0
+|         |         |    \--- io.ktor:ktor-events-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-http-cio:3.4.0
+|         |         |    \--- io.ktor:ktor-http-cio-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- io.ktor:ktor-network:3.4.0
+|         |         |         |    \--- io.ktor:ktor-network-jvm:3.4.0
+|         |         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-http:3.4.0 (*)
+|         |         |         +--- io.ktor:ktor-io:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-websockets:3.4.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-reflect:2.3.0
+|         |         |    \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         \--- org.fusesource.jansi:jansi:2.4.2
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-core:3.4.0 (*)
++--- io.ktor:ktor-serialization-kotlinx-json:3.4.0
+|    \--- io.ktor:ktor-serialization-kotlinx-json-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-serialization-kotlinx:3.4.0
+|         |    \--- io.ktor:ktor-serialization-kotlinx-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-serialization:3.4.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0
+|         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.9.0
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.9.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         \--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.9.0
+|         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-io-jvm:1.9.0
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.9.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.2.0 -> 2.3.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (*)
+|         |         \--- org.jetbrains.kotlinx:kotlinx-io-core:0.6.0 -> 0.8.2 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-host-common:3.4.0
+|    \--- io.ktor:ktor-server-host-common-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-netty:3.4.0
+|    \--- io.ktor:ktor-server-netty-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         +--- io.netty:netty-codec-http2:4.2.9.Final
+|         |    +--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-buffer:4.2.9.Final
+|         |    |    \--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-transport:4.2.9.Final
+|         |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    \--- io.netty:netty-resolver:4.2.9.Final
+|         |    |         \--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-codec-base:4.2.9.Final
+|         |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    \--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    +--- io.netty:netty-handler:4.2.9.Final
+|         |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    +--- io.netty:netty-resolver:4.2.9.Final (*)
+|         |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    |    +--- io.netty:netty-transport-native-unix-common:4.2.9.Final
+|         |    |    |    +--- io.netty:netty-common:4.2.9.Final
+|         |    |    |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    |    |    \--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    |    \--- io.netty:netty-codec-base:4.2.9.Final (*)
+|         |    \--- io.netty:netty-codec-http:4.2.9.Final
+|         |         +--- io.netty:netty-common:4.2.9.Final
+|         |         +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         +--- io.netty:netty-codec-base:4.2.9.Final (*)
+|         |         +--- io.netty:netty-codec-compression:4.2.9.Final
+|         |         |    +--- io.netty:netty-common:4.2.9.Final
+|         |         |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         |    \--- io.netty:netty-codec-base:4.2.9.Final (*)
+|         |         \--- io.netty:netty-handler:4.2.9.Final (*)
+|         +--- org.eclipse.jetty.alpn:alpn-api:1.1.3.v20160715
+|         +--- io.netty:netty-transport-native-kqueue:4.2.9.Final
+|         |    +--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         |    \--- io.netty:netty-transport-classes-kqueue:4.2.9.Final
+|         |         +--- io.netty:netty-common:4.2.9.Final
+|         |         +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         \--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         +--- io.netty:netty-transport-native-epoll:4.2.9.Final
+|         |    +--- io.netty:netty-common:4.2.9.Final
+|         |    +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |    +--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         |    \--- io.netty:netty-transport-classes-epoll:4.2.9.Final
+|         |         +--- io.netty:netty-common:4.2.9.Final
+|         |         +--- io.netty:netty-buffer:4.2.9.Final (*)
+|         |         +--- io.netty:netty-transport:4.2.9.Final (*)
+|         |         \--- io.netty:netty-transport-native-unix-common:4.2.9.Final (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-cors:3.4.0
+|    \--- io.ktor:ktor-server-cors-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-auth:3.4.0
+|    \--- io.ktor:ktor-server-auth-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         +--- io.ktor:ktor-client-core:3.4.0
+|         |    \--- io.ktor:ktor-client-core-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-http:3.4.0 (*)
+|         |         +--- io.ktor:ktor-http-cio:3.4.0 (*)
+|         |         +--- io.ktor:ktor-events:3.4.0 (*)
+|         |         +--- io.ktor:ktor-websocket-serialization:3.4.0
+|         |         |    \--- io.ktor:ktor-websocket-serialization-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-serialization:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- io.ktor:ktor-sse:3.4.0
+|         |         |    \--- io.ktor:ktor-sse-jvm:3.4.0
+|         |         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         \--- org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:1.10.2
+|         |              +--- org.slf4j:slf4j-api:1.7.32 -> 2.0.17
+|         |              +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |              +--- org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.10.2 (*)
+|         |              \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.0 -> 2.3.0 (*)
+|         +--- io.ktor:ktor-server-sessions:3.4.0
+|         |    \--- io.ktor:ktor-server-sessions-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- io.ktor:ktor-server-auth-jwt:3.4.0
+|    \--- io.ktor:ktor-server-auth-jwt-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- io.ktor:ktor-server-auth:3.4.0 (*)
+|         +--- com.auth0:java-jwt:4.5.0
+|         |    +--- com.fasterxml.jackson.core:jackson-core:2.15.4
+|         |    |    \--- com.fasterxml.jackson:jackson-bom:2.15.4
+|         |    |         +--- com.fasterxml.jackson.core:jackson-annotations:2.15.4 (c)
+|         |    |         +--- com.fasterxml.jackson.core:jackson-core:2.15.4 (c)
+|         |    |         \--- com.fasterxml.jackson.core:jackson-databind:2.15.4 (c)
+|         |    \--- com.fasterxml.jackson.core:jackson-databind:2.15.4
+|         |         +--- com.fasterxml.jackson.core:jackson-annotations:2.15.4
+|         |         |    \--- com.fasterxml.jackson:jackson-bom:2.15.4 (*)
+|         |         +--- com.fasterxml.jackson.core:jackson-core:2.15.4 (*)
+|         |         \--- com.fasterxml.jackson:jackson-bom:2.15.4 (*)
+|         +--- com.auth0:jwks-rsa:0.23.0
+|         |    +--- com.fasterxml.jackson.core:jackson-databind:2.15.0 -> 2.15.4 (*)
+|         |    \--- com.google.guava:guava:32.1.2-jre
+|         |         +--- com.google.guava:guava-parent:32.1.2-jre
+|         |         |    +--- com.google.code.findbugs:jsr305:3.0.2 (c)
+|         |         |    +--- org.checkerframework:checker-qual:3.33.0 (c)
+|         |         |    \--- com.google.errorprone:error_prone_annotations:2.18.0 (c)
+|         |         +--- com.google.guava:failureaccess:1.0.1
+|         |         +--- com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava
+|         |         +--- com.google.code.findbugs:jsr305 -> 3.0.2
+|         |         +--- org.checkerframework:checker-qual -> 3.33.0
+|         |         \--- com.google.errorprone:error_prone_annotations -> 2.18.0
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
++--- ch.qos.logback:logback-classic:1.4.14
+|    +--- ch.qos.logback:logback-core:1.4.14
+|    \--- org.slf4j:slf4j-api:2.0.7 -> 2.0.17
++--- org.jetbrains.exposed:exposed-core:0.58.0
+|    +--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.3.0 (*)
+|    +--- org.jetbrains.kotlin:kotlin-reflect:2.0.0 -> 2.3.0 (*)
+|    +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1 -> 1.10.2 (*)
+|    \--- org.slf4j:slf4j-api:2.0.9 -> 2.0.17
++--- org.jetbrains.exposed:exposed-dao:0.58.0
+|    +--- org.jetbrains.exposed:exposed-core:0.58.0 (*)
+|    \--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.3.0 (*)
++--- org.jetbrains.exposed:exposed-jdbc:0.58.0
+|    +--- org.jetbrains.exposed:exposed-core:0.58.0 (*)
+|    \--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.3.0 (*)
++--- org.mariadb.jdbc:mariadb-java-client:3.2.0
+|    \--- com.github.waffle:waffle-jna:3.2.0
+|         +--- net.java.dev.jna:jna:5.12.1
+|         +--- net.java.dev.jna:jna-platform:5.12.1
+|         |    \--- net.java.dev.jna:jna:5.12.1
+|         +--- org.slf4j:jcl-over-slf4j:1.7.36
+|         |    \--- org.slf4j:slf4j-api:1.7.36 -> 2.0.17
+|         +--- org.slf4j:slf4j-api:1.7.36 -> 2.0.17
+|         +--- com.github.ben-manes.caffeine:caffeine:2.9.3
+|         |    +--- org.checkerframework:checker-qual:3.19.0 -> 3.33.0
+|         |    \--- com.google.errorprone:error_prone_annotations:2.10.0 -> 2.18.0
+|         \--- org.checkerframework:checker-qual:3.23.0 -> 3.33.0
++--- com.h2database:h2:2.2.224
++--- org.mindrot:jbcrypt:0.4
++--- io.ktor:ktor-server-test-host:3.4.0
+|    \--- io.ktor:ktor-server-test-host-jvm:3.4.0
+|         +--- org.slf4j:slf4j-api:2.0.17
+|         +--- io.ktor:ktor-network-tls:3.4.0
+|         |    \--- io.ktor:ktor-network-tls-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-http:3.4.0 (*)
+|         |         +--- io.ktor:ktor-network:3.4.0 (*)
+|         |         +--- io.ktor:ktor-utils:3.4.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- io.ktor:ktor-client-apache5:3.4.0
+|         |    \--- io.ktor:ktor-client-apache5-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- io.ktor:ktor-client-core:3.4.0 (*)
+|         |         +--- org.apache.httpcomponents.client5:httpclient5:5.5.1
+|         |         |    +--- org.apache.httpcomponents.core5:httpcore5:5.3.6
+|         |         |    +--- org.apache.httpcomponents.core5:httpcore5-h2:5.3.6
+|         |         |    |    \--- org.apache.httpcomponents.core5:httpcore5:5.3.6
+|         |         |    \--- org.slf4j:slf4j-api:1.7.36 -> 2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- io.ktor:ktor-network-tls-certificates:3.4.0
+|         |    \--- io.ktor:ktor-network-tls-certificates-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- io.ktor:ktor-network-tls:3.4.0 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- io.ktor:ktor-server-call-logging:3.4.0
+|         |    \--- io.ktor:ktor-server-call-logging-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         |         +--- org.fusesource.jansi:jansi:2.4.2
+|         |         \--- org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:1.10.2 (*)
+|         +--- io.ktor:ktor-server-websockets:3.4.0
+|         |    \--- io.ktor:ktor-server-websockets-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         |         +--- io.ktor:ktor-websockets:3.4.0 (*)
+|         |         +--- io.ktor:ktor-websocket-serialization:3.4.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         +--- io.ktor:ktor-client-cio:3.4.0
+|         |    \--- io.ktor:ktor-client-cio-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- io.ktor:ktor-client-core:3.4.0 (*)
+|         |         +--- io.ktor:ktor-http-cio:3.4.0 (*)
+|         |         +--- io.ktor:ktor-websockets:3.4.0 (*)
+|         |         +--- io.ktor:ktor-network-tls:3.4.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- io.ktor:ktor-server-core:3.4.0 (*)
+|         +--- io.ktor:ktor-client-core:3.4.0 (*)
+|         +--- io.ktor:ktor-test-dispatcher:3.4.0
+|         |    \--- io.ktor:ktor-test-dispatcher-jvm:3.4.0
+|         |         +--- org.slf4j:slf4j-api:2.0.17
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2
+|         |         |    \--- org.jetbrains.kotlinx:kotlinx-coroutines-test-jvm:1.10.2
+|         |         |         +--- org.jetbrains:annotations:23.0.0
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.10.2 (*)
+|         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.0 -> 2.3.0 (*)
+|         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+|         \--- org.jetbrains.kotlinx:kotlinx-coroutines-debug:1.10.2
+|              +--- net.bytebuddy:byte-buddy:1.10.9
+|              +--- net.bytebuddy:byte-buddy-agent:1.10.9
+|              +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2 (*)
+|              +--- org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.10.2 (*)
+|              +--- net.java.dev.jna:jna:5.9.0 -> 5.12.1
+|              +--- net.java.dev.jna:jna-platform:5.9.0 -> 5.12.1 (*)
+|              \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.0 -> 2.3.0 (*)
+\--- org.jetbrains.kotlin:kotlin-test-junit:2.3.0
+     +--- org.jetbrains.kotlin:kotlin-test:2.3.0
+     |    \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 (*)
+     \--- junit:junit:4.13.2
+          \--- org.hamcrest:hamcrest-core:1.3
+
+testRuntimeOnly - Runtime only dependencies for 'test'. (n)
+No dependencies
+
+(c) - A dependency constraint, not a dependency. The dependency affected by the constraint occurs elsewhere in the tree.
+(*) - Indicates repeated occurrences of a transitive dependency subtree. Gradle expands transitive dependency subtrees only once per project; repeat occurrences only display the root of the subtree, followed by this annotation.
+
+(n) - A dependency or dependency configuration that cannot be resolved.
+
+A web-based, searchable dependency report is available by adding the --scan option.
+
+BUILD SUCCESSFUL in 3m 19s
+1 actionable task: 1 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.3.0/userguide/configuration_cache_enabling.html
+ ---> Removed intermediate container 9fad3f737ee9
+ ---> 2293ccb7ba27
+Step 7/17 : COPY src/ src/
+ ---> 4a97f72f02fe
+Step 8/17 : RUN ./gradlew installDist --no-daemon --info
+ ---> Running in f59e128070d3
+Initialized native services in: /root/.gradle/native
+Initialized jansi services in: /root/.gradle/native
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.3.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Starting process 'Gradle build daemon'. Working directory: /root/.gradle/daemon/9.3.0 Command: /opt/java/openjdk/bin/java --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.xml/javax.xml.namespace=ALL-UNNAMED --add-opens=java.base/java.time=ALL-UNNAMED -XX:MaxMetaspaceSize=384m -XX:+HeapDumpOnOutOfMemoryError -Xms256m -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Duser.variant -cp /root/.gradle/wrapper/dists/gradle-9.3.0-bin/79n14ral3mx1ozqr3csh2u872/gradle-9.3.0/lib/gradle-daemon-main-9.3.0.jar -javaagent:/root/.gradle/wrapper/dists/gradle-9.3.0-bin/79n14ral3mx1ozqr3csh2u872/gradle-9.3.0/lib/agents/gradle-instrumentation-agent-9.3.0.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 9.3.0
+Successfully started process 'Gradle build daemon'
+An attempt to start the daemon took 1.428 secs.
+The client will now receive all logging from the daemon (pid: 41). The daemon log file: /root/.gradle/daemon/9.3.0/daemon-41.out.log
+Daemon will be stopped at the end of the build 
+Using 4 worker leases.
+Operational build model parameters: {requiresToolingModels=false, parallelProjectExecution=false, configureOnDemand=false, configurationCache=false, configurationCacheParallelStore=false, configurationCacheParallelLoad=true, isolatedProjects=false, parallelProjectConfiguration=false, intermediateModelCache=false, parallelToolingApiActions=false, invalidateCoupledProjects=false, modelAsProjectDependency=false, resilientModelBuilding=false}
+Received JVM installation metadata from '/opt/java/openjdk': {JAVA_HOME=/opt/java/openjdk, JAVA_VERSION=21.0.10, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.10+7-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.10+7-LTS, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+Watching the file system is configured to be enabled if available
+Not watching /app since the file system is not supported
+File system watching is active
+Starting Build
+Resolved plugin [id: 'org.gradle.toolchains.foojay-resolver-convention', version: '0.8.0']
+Settings evaluated using settings file '/app/settings.gradle.kts'.
+Projects loaded. Root project using build file '/app/build.gradle.kts'.
+Included projects: [root project 'vehiculos-raspi']
+
+> Configure project :
+Evaluating root project 'vehiculos-raspi' using build file '/app/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.3.0']
+Resolved plugin [id: 'io.ktor.plugin', version: '3.4.0']
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.serialization', version: '2.3.0']
+Build 70288532-534b-4a35-924a-4410c91cb1cd is started
+Using Kotlin Gradle Plugin gradle813 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+Skipping Develocity integration for Shadow plugin.
+Setting org.gradle.jvm.version attribute for shadowRuntimeElements configuration.
+Setting target JVM version to 21 for shadowRuntimeElements configuration.
+Adding shadowRuntimeElements variant to Java component.
+All projects evaluated.
+Task name matched 'installDist'
+Selected primary task 'installDist' from project :
+Tasks to be executed: [task ':checkKotlinGradlePluginConfigurationErrors', task ':compileKotlin', task ':compileJava', task ':processResources', task ':classes', task ':jar', task ':startScripts', task ':installDist']
+Tasks that were excluded: []
+Resolve mutations for :checkKotlinGradlePluginConfigurationErrors (Thread[#67,included builds,5,main]) started.
+:checkKotlinGradlePluginConfigurationErrors (Thread[#68,Execution worker,5,main]) started.
+
+> Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :compileKotlin (Thread[#67,included builds,5,main]) started.
+:compileKotlin (Thread[#67,included builds,5,main]) started.
+
+> Task :compileKotlin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/exposed/exposed-dao/0.58.0/exposed-dao-0.58.0.jar to /root/.gradle/.tmp/gradle_download14377235825235322201bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/exposed/exposed-jdbc/0.58.0/exposed-jdbc-0.58.0.jar to /root/.gradle/.tmp/gradle_download5485305298588182088bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-server-content-negotiation-jvm/3.4.0/ktor-server-content-negotiation-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download7725057075782524016bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/exposed/exposed-core/0.58.0/exposed-core-0.58.0.jar to /root/.gradle/.tmp/gradle_download4867670142114310705bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-server-host-common-jvm/3.4.0/ktor-server-host-common-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download803850652762458257bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-server-netty-jvm/3.4.0/ktor-server-netty-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download9836310681144167693bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-server-cors-jvm/3.4.0/ktor-server-cors-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download3558016080266296684bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-server-auth-jwt-jvm/3.4.0/ktor-server-auth-jwt-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download1309376973686165547bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-server-auth-jvm/3.4.0/ktor-server-auth-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download3459594853742645335bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-server-sessions-jvm/3.4.0/ktor-server-sessions-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download2146029631678844460bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-server-core-jvm/3.4.0/ktor-server-core-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download11459379852855923573bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-serialization-kotlinx-json-jvm/3.4.0/ktor-serialization-kotlinx-json-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download7401947294854825170bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-reflect/2.3.0/kotlin-reflect-2.3.0.jar to /root/.gradle/.tmp/gradle_download16507570700704461021bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-client-core-jvm/3.4.0/ktor-client-core-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download17782415810359587138bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-http-cio-jvm/3.4.0/ktor-http-cio-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download14281899349375827697bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-serialization-kotlinx-jvm/3.4.0/ktor-serialization-kotlinx-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download17118246442281400608bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-websocket-serialization-jvm/3.4.0/ktor-websocket-serialization-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download3573572315500692026bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-serialization-jvm/3.4.0/ktor-serialization-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download11749921613012541916bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-websockets-jvm/3.4.0/ktor-websockets-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download10660631186001170662bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-http-jvm/3.4.0/ktor-http-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download18349401327767089783bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-events-jvm/3.4.0/ktor-events-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download8757973077725578344bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-network-jvm/3.4.0/ktor-network-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download2060429614942140943bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-sse-jvm/3.4.0/ktor-sse-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download2741557531129243105bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-utils-jvm/3.4.0/ktor-utils-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download6923172168040589989bin
+Downloading https://repo.maven.apache.org/maven2/io/ktor/ktor-io-jvm/3.4.0/ktor-io-jvm-3.4.0.jar to /root/.gradle/.tmp/gradle_download10281417765555382664bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.10.2/kotlinx-coroutines-core-jvm-1.10.2.jar to /root/.gradle/.tmp/gradle_download5030833979015789755bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-core-jvm/1.9.0/kotlinx-serialization-core-jvm-1.9.0.jar to /root/.gradle/.tmp/gradle_download7958994347827379794bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-json-io-jvm/1.9.0/kotlinx-serialization-json-io-jvm-1.9.0.jar to /root/.gradle/.tmp/gradle_download3863126021268545635bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-json-jvm/1.9.0/kotlinx-serialization-json-jvm-1.9.0.jar to /root/.gradle/.tmp/gradle_download4605961321504838975bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-io-core-jvm/0.8.2/kotlinx-io-core-jvm-0.8.2.jar to /root/.gradle/.tmp/gradle_download12338851508132980844bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-io-bytestring-jvm/0.8.2/kotlinx-io-bytestring-jvm-0.8.2.jar to /root/.gradle/.tmp/gradle_download15710970529763681341bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/2.3.0/kotlin-stdlib-2.3.0.jar to /root/.gradle/.tmp/gradle_download8778450828976672853bin
+Downloading https://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.4.14/logback-classic-1.4.14.jar to /root/.gradle/.tmp/gradle_download357137578412648702bin
+Downloading https://repo.maven.apache.org/maven2/org/mariadb/jdbc/mariadb-java-client/3.2.0/mariadb-java-client-3.2.0.jar to /root/.gradle/.tmp/gradle_download15885446712818412121bin
+Downloading https://repo.maven.apache.org/maven2/com/h2database/h2/2.2.224/h2-2.2.224.jar to /root/.gradle/.tmp/gradle_download10133471478589015322bin
+Downloading https://repo.maven.apache.org/maven2/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.jar to /root/.gradle/.tmp/gradle_download1326214370141485423bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/annotations/23.0.0/annotations-23.0.0.jar to /root/.gradle/.tmp/gradle_download14168109927654124907bin
+Downloading https://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.4.14/logback-core-1.4.14.jar to /root/.gradle/.tmp/gradle_download5766122857076146724bin
+Downloading https://repo.maven.apache.org/maven2/com/github/waffle/waffle-jna/3.2.0/waffle-jna-3.2.0.jar to /root/.gradle/.tmp/gradle_download17162539627136134706bin
+Downloading https://repo.maven.apache.org/maven2/org/slf4j/jcl-over-slf4j/1.7.36/jcl-over-slf4j-1.7.36.jar to /root/.gradle/.tmp/gradle_download12566283658994704758bin
+Downloading https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar to /root/.gradle/.tmp/gradle_download2440813404240370960bin
+Downloading https://repo.maven.apache.org/maven2/com/typesafe/config/1.4.5/config-1.4.5.jar to /root/.gradle/.tmp/gradle_download691409955102281597bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/4.2.9.Final/netty-codec-http2-4.2.9.Final.jar to /root/.gradle/.tmp/gradle_download8927976723490683663bin
+Downloading https://repo.maven.apache.org/maven2/org/eclipse/jetty/alpn/alpn-api/1.1.3.v20160715/alpn-api-1.1.3.v20160715.jar to /root/.gradle/.tmp/gradle_download11272628088869868493bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-kqueue/4.2.9.Final/netty-transport-native-kqueue-4.2.9.Final.jar to /root/.gradle/.tmp/gradle_download9875338762470681340bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.2.9.Final/netty-transport-native-epoll-4.2.9.Final.jar to /root/.gradle/.tmp/gradle_download5651972777662452339bin
+Downloading https://repo.maven.apache.org/maven2/com/auth0/java-jwt/4.5.0/java-jwt-4.5.0.jar to /root/.gradle/.tmp/gradle_download11050697043743010640bin
+Downloading https://repo.maven.apache.org/maven2/com/auth0/jwks-rsa/0.23.0/jwks-rsa-0.23.0.jar to /root/.gradle/.tmp/gradle_download301530707098306747bin
+Downloading https://repo.maven.apache.org/maven2/net/java/dev/jna/jna-platform/5.12.1/jna-platform-5.12.1.jar to /root/.gradle/.tmp/gradle_download8323435904580250946bin
+Downloading https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/5.12.1/jna-5.12.1.jar to /root/.gradle/.tmp/gradle_download16611121463204554238bin
+Downloading https://repo.maven.apache.org/maven2/com/github/ben-manes/caffeine/caffeine/2.9.3/caffeine-2.9.3.jar to /root/.gradle/.tmp/gradle_download3571262900244258967bin
+Downloading https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.23.0/checker-qual-3.23.0.jar to /root/.gradle/.tmp/gradle_download1773750735403726618bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.2.9.Final/netty-codec-http-4.2.9.Final.jar to /root/.gradle/.tmp/gradle_download10029954083669580567bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.2.9.Final/netty-handler-4.2.9.Final.jar to /root/.gradle/.tmp/gradle_download9476407357806838335bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-codec-base/4.2.9.Final/netty-codec-base-4.2.9.Final.jar to /root/.gradle/.tmp/gradle_download7328693196278746545bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-codec-compression/4.2.9.Final/netty-codec-compression-4.2.9.Final.jar to /root/.gradle/.tmp/gradle_download11417874726227680295bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-kqueue/4.2.9.Final/netty-transport-classes-kqueue-4.2.9.Final.jar to /root/.gradle/.tmp/gradle_download8884152341763866541bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.2.9.Final/netty-transport-classes-epoll-4.2.9.Final.jar to /root/.gradle/.tmp/gradle_download17376774223094947757bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.2.9.Final/netty-transport-native-unix-common-4.2.9.Final.jar to /root/.gradle/.tmp/gradle_download7063498652354439127bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.2.9.Final/netty-buffer-4.2.9.Final.jar to /root/.gradle/.tmp/gradle_download3200161223529379563bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.2.9.Final/netty-transport-4.2.9.Final.jar to /root/.gradle/.tmp/gradle_download16903765016947710840bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.2.9.Final/netty-resolver-4.2.9.Final.jar to /root/.gradle/.tmp/gradle_download13577456012237172178bin
+Downloading https://repo.maven.apache.org/maven2/io/netty/netty-common/4.2.9.Final/netty-common-4.2.9.Final.jar to /root/.gradle/.tmp/gradle_download128177035432356409bin
+Downloading https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.15.4/jackson-annotations-2.15.4.jar to /root/.gradle/.tmp/gradle_download5478201441170092782bin
+Downloading https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.15.4/jackson-databind-2.15.4.jar to /root/.gradle/.tmp/gradle_download17535917920980402249bin
+Downloading https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.15.4/jackson-core-2.15.4.jar to /root/.gradle/.tmp/gradle_download17482677611209084053bin
+Downloading https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.10.0/error_prone_annotations-2.10.0.jar to /root/.gradle/.tmp/gradle_download7519670547299114247bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-build-tools-compat/2.3.0/kotlin-build-tools-compat-2.3.0.jar to /root/.gradle/.tmp/gradle_download18055711480533970220bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-build-tools-impl/2.3.0/kotlin-build-tools-impl-2.3.0.jar to /root/.gradle/.tmp/gradle_download8504537826987224471bin
+Found locally available resource with matching checksum: [https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-tooling-core/2.3.0/kotlin-tooling-core-2.3.0.jar, /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-tooling-core/2.3.0/7a050c09910ee587944bc2a7413e2d97d751f647/kotlin-tooling-core-2.3.0.jar]
+Found locally available resource with matching checksum: [https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-build-tools-api/2.3.0/kotlin-build-tools-api-2.3.0.jar, /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-build-tools-api/2.3.0/7ffbfd5aface13641e9ff9b921e50287bad6ab7d/kotlin-build-tools-api-2.3.0.jar]
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-compiler-embeddable/2.3.0/kotlin-compiler-embeddable-2.3.0.jar to /root/.gradle/.tmp/gradle_download15472970502350589941bin
+Found locally available resource with matching checksum: [https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-compiler-runner/2.3.0/kotlin-compiler-runner-2.3.0.jar, /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-runner/2.3.0/1df18e780611e4f4a6cd42a27313625464b6e01f/kotlin-compiler-runner-2.3.0.jar]
+Found locally available resource with matching checksum: [https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-daemon-client/2.3.0/kotlin-daemon-client-2.3.0.jar, /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-daemon-client/2.3.0/2510f279208997188df6edffb589b21ee1e06822/kotlin-daemon-client-2.3.0.jar]
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-script-runtime/2.3.0/kotlin-script-runtime-2.3.0.jar to /root/.gradle/.tmp/gradle_download17968467807346394056bin
+Found locally available resource with matching checksum: [https://repo.maven.apache.org/maven2/org/jetbrains/annotations/13.0/annotations-13.0.jar, /root/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar]
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-reflect/1.6.10/kotlin-reflect-1.6.10.jar to /root/.gradle/.tmp/gradle_download4245427136145506901bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-daemon-embeddable/2.3.0/kotlin-daemon-embeddable-2.3.0.jar to /root/.gradle/.tmp/gradle_download9979543187667191489bin
+Found locally available resource with matching checksum: [https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.8.0/kotlinx-coroutines-core-jvm-1.8.0.jar, /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.8.0/ac1dc37a30a93150b704022f8d895ee1bd3a36b3/kotlinx-coroutines-core-jvm-1.8.0.jar]
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.exposed/exposed-jdbc/0.58.0/738342342a92348610aabadcdfeeefb1e8efdd61/exposed-jdbc-0.58.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.exposed/exposed-dao/0.58.0/15d414de0b02f3f7e341c7fa692c1d54748afc90/exposed-dao-0.58.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.exposed/exposed-core/0.58.0/c76bc6a2e7439cb2b5f9e112901859b30146161c/exposed-core-0.58.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-server-content-negotiation-jvm/3.4.0/7b8e63349d52285eb6a89a070819385715d9a8e3/ktor-server-content-negotiation-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-server-host-common-jvm/3.4.0/1459def6b5405e68ac94a0ce688147d93b83a86/ktor-server-host-common-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-server-netty-jvm/3.4.0/506a40eb5b7fb22fec46938489286cf4cd48bbc7/ktor-server-netty-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-server-cors-jvm/3.4.0/fbe7efadd3e2ae5ddfa3353212c1aeeecf2108ce/ktor-server-cors-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-server-auth-jwt-jvm/3.4.0/f9c667cf2b122debb0081d0d69edb4caaa047d09/ktor-server-auth-jwt-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-server-auth-jvm/3.4.0/6c5fd0cb490bc7efabda621873c07b30b2e7f686/ktor-server-auth-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-server-sessions-jvm/3.4.0/35d3bb0535b2a6429b1eb73390cd4de9c541e654/ktor-server-sessions-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-server-core-jvm/3.4.0/97aba0f5e3cd539679907382a3f5783b9a563165/ktor-server-core-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-serialization-kotlinx-json-jvm/3.4.0/2a09f17d70b6e61623fd8aff9bdce6d7877892/ktor-serialization-kotlinx-json-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-client-core-jvm/3.4.0/1f017fc4dcf7e3ff5152a28923b7639a9ba82123/ktor-client-core-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.3.0/a723c4fbeeb7b48910a0f82b8ea826da1b17dd0b/kotlin-reflect-2.3.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-http-cio-jvm/3.4.0/2c1f50d77b7d825175acf56f6cb494fc1145e23e/ktor-http-cio-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-serialization-kotlinx-jvm/3.4.0/d001db47b2ebe8ad8b2cb1bb2a687688840f5887/ktor-serialization-kotlinx-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-websocket-serialization-jvm/3.4.0/20093fc55064238930e96c8dd12a2d96af6ff81d/ktor-websocket-serialization-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-serialization-jvm/3.4.0/406af3e14bc41086ac933c02c67bd7ee762cfb4b/ktor-serialization-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-websockets-jvm/3.4.0/5c8a9438372c7de912cf6da0e275ec17056d6451/ktor-websockets-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-events-jvm/3.4.0/d6e6800119bf169c0559eeaf49477757e50a736/ktor-events-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-http-jvm/3.4.0/81e4323a06aa6751f59ffe6e35e61277af17fdb5/ktor-http-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-network-jvm/3.4.0/8d6179be0155e1d34f844a8317b7f1950772a372/ktor-network-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-sse-jvm/3.4.0/3b4493bfb71b536fc0c055d645ceb1a44b318637/ktor-sse-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-utils-jvm/3.4.0/ce54b074feee2cc3cdac2ba93420f18adc71061d/ktor-utils-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-io-jvm/3.4.0/16e3233d00797f77f2b918a65d40479c28dc2bde/ktor-io-jvm-3.4.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.10.2/4a9f78ef49483748e2c129f3d124b8fa249dafbf/kotlinx-coroutines-core-jvm-1.10.2.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-core-jvm/1.9.0/91448df39c558f7c6147b8bd8db01debe16e0cc1/kotlinx-serialization-core-jvm-1.9.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-json-io-jvm/1.9.0/3a371942a591532d0d9245ca6787ee677853bebd/kotlinx-serialization-json-io-jvm-1.9.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-io-core-jvm/0.8.2/358a9f2ba2dc81c5dc84c3d1853f6e5efba63be1/kotlinx-io-core-jvm-0.8.2.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-json-jvm/1.9.0/aea6f7d49fe5c458f8963ee6d4bdaf4a459ab3e7/kotlinx-serialization-json-jvm-1.9.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-io-bytestring-jvm/0.8.2/89c5399596250e71f2bba6d2415972a078a525c7/kotlinx-io-bytestring-jvm-0.8.2.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.3.0/ebc4eb2b6e6c91b6c844c1e3183920d86f2ef656/kotlin-stdlib-2.3.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.4.14/d98bc162275134cdf1518774da4a2a17ef6fb94d/logback-classic-1.4.14.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.mariadb.jdbc/mariadb-java-client/3.2.0/60848ec1bfea9449d5acd2bd2025d712ace7fdcc/mariadb-java-client-3.2.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.mindrot/jbcrypt/0.4/af7e61017f73abb18ac4e036954f9f28c6366c07/jbcrypt-0.4.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/com.h2database/h2/2.2.224/7bdade27d8cd197d9b5ce9dc251f41d2edc5f7ad/h2-2.2.224.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/23.0.0/8cc20c07506ec18e0834947b84a864bfc094484e/annotations-23.0.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.4.14/4d3c2248219ac0effeb380ed4c5280a80bf395e8/logback-core-1.4.14.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/com.github.waffle/waffle-jna/3.2.0/6ac5882dea3a15575237ef5d1793c51279ae1335/waffle-jna-3.2.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.36/d877e195a05aca4a2f1ad2ff14bfec1393af4b5e/jcl-over-slf4j-1.7.36.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/2.0.17/d9e58ac9c7779ba3bf8142aff6c830617a7fe60f/slf4j-api-2.0.17.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/com.typesafe/config/1.4.5/cc25b497ded7068a861517a815546fb472f9e58/config-1.4.5.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.alpn/alpn-api/1.1.3.v20160715/a1bf3a937f91b4c953acd13e8c9552347adc2198/alpn-api-1.1.3.v20160715.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-kqueue/4.2.9.Final/82c7326ed0d96eb139e6a01de038267689ddb94e/netty-transport-native-kqueue-4.2.9.Final.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.2.9.Final/22d92bed4d8a563a3f040137cfaea8230dbe786b/netty-transport-native-epoll-4.2.9.Final.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-http2/4.2.9.Final/d82683120b05d1c9c56a88e1daff07e4c0420537/netty-codec-http2-4.2.9.Final.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/com.auth0/jwks-rsa/0.23.0/76b14c3f09a1edea16856ec500a18030fa192065/jwks-rsa-0.23.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/com.auth0/java-jwt/4.5.0/d7004155fe57a107cc40fb6be0132d8ad2530613/java-jwt-4.5.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna-platform/5.12.1/97406a297c852f4a41e688a176ec675f72e8329/jna-platform-5.12.1.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.12.1/b1e93a735caea94f503e95e6fe79bf9cdc1e985d/jna-5.12.1.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/com.github.ben-manes.caffeine/caffeine/2.9.3/b162491f768824d21487551873f9b3b374a7fe19/caffeine-2.9.3.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.23.0/2ce274da87ae21d940ded7b827d9069206ea3001/checker-qual-3.23.0.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler/4.2.9.Final/f79da6a81f4390ed067301235e29705a7f774c5b/netty-handler-4.2.9.Final.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-http/4.2.9.Final/20077d54b08a1cf7d764b169946373dff2e9f9be/netty-codec-http-4.2.9.Final.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-compression/4.2.9.Final/d3d3c3c16110278d1dbf8a423e20a839523724cd/netty-codec-compression-4.2.9.Final.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-kqueue/4.2.9.Final/b86b5a013c699eb5464f2093857e0addd6e03449/netty-transport-classes-kqueue-4.2.9.Final.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-base/4.2.9.Final/1ecb17e188008c62aef9d03491f2fde6b06414bb/netty-codec-base-4.2.9.Final.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-epoll/4.2.9.Final/334ba203f5b5ac6372286d27115605431e5a37d3/netty-transport-classes-epoll-4.2.9.Final.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-unix-common/4.2.9.Final/ff416b5aaac1fbfe625ee92deb08664e938aa00/netty-transport-native-unix-common-4.2.9.Final.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.netty/netty-resolver/4.2.9.Final/faccff808e9166f1d689e054059b172cffc738ab/netty-resolver-4.2.9.Final.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.netty/netty-buffer/4.2.9.Final/d419abb1b035e1ab4dae22766c3ebf37343cc82b/netty-buffer-4.2.9.Final.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport/4.2.9.Final/b864fc8ec3d72b6e22af88f5408b6ad7e41980ec/netty-transport-4.2.9.Final.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.15.4/5223ea5a9bf52cdc9c5e537a0e52f2432eaf208b/jackson-annotations-2.15.4.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.2.9.Final/4429addd1a59cb52dde76102f61b3f696fd3b9c/netty-common-4.2.9.Final.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.15.4/aebe84b45360debad94f692a4074c6aceb535fa0/jackson-core-2.15.4.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.15.4/560309fc381f77d4d15c4a4cdaa0db5025c4fd13/jackson-databind-2.15.4.jar because:
+  Build cache is disabled
+Caching disabled for ClasspathEntrySnapshotTransform: /root/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.10.0/9bc20b94d3ac42489cf6ce1e42509c86f6f861a1/error_prone_annotations-2.10.0.jar because:
+  Build cache is disabled
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-compiler-embeddable/2.3.0/kotlin-scripting-compiler-embeddable-2.3.0.jar to /root/.gradle/.tmp/gradle_download6207493457205549798bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-jvm/2.3.0/kotlin-scripting-jvm-2.3.0.jar to /root/.gradle/.tmp/gradle_download2572412188536369430bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-compiler-impl-embeddable/2.3.0/kotlin-scripting-compiler-impl-embeddable-2.3.0.jar to /root/.gradle/.tmp/gradle_download11289710172179747164bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-serialization-compiler-plugin-embeddable/2.3.0/kotlin-serialization-compiler-plugin-embeddable-2.3.0.jar to /root/.gradle/.tmp/gradle_download15663617372192782202bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-common/2.3.0/kotlin-scripting-common-2.3.0.jar to /root/.gradle/.tmp/gradle_download5199553100863267489bin
+Caching disabled for task ':compileKotlin' because:
+  Build cache is disabled
+Task ':compileKotlin' is not up-to-date because:
+  No history is available.
+The input changes require a full rebuild for incremental task ':compileKotlin'.
+file or directory '/app/src/main/java', not found
+file or directory '/app/src/main/java', not found
+file or directory '/app/src/main/java', not found
+file or directory '/app/src/main/java', not found
+Kotlin source files: /app/src/main/kotlin/com/example/ktor/Security.kt, /app/src/main/kotlin/com/example/ktor/HTTP.kt, /app/src/main/kotlin/com/example/ktor/Database.kt, /app/src/main/kotlin/com/example/ktor/Serialization.kt, /app/src/main/kotlin/com/example/ktor/Application.kt, /app/src/main/kotlin/com/example/ktor/Routing.kt, /app/src/main/kotlin/com/example/domain/usecase/ProviderUseCase.kt, /app/src/main/kotlin/com/example/domain/usecase/UpdateVehicleUseCase.kt, /app/src/main/kotlin/com/example/domain/usecase/InsertVehicleUseCase.kt, /app/src/main/kotlin/com/example/domain/usecase/DeleteVehicleUseCase.kt, /app/src/main/kotlin/com/example/domain/usecase/GetVehiclesByBrandUseCase.kt, /app/src/main/kotlin/com/example/domain/usecase/GetAllVehiclesUseCase.kt, /app/src/main/kotlin/com/example/domain/usecase/GetVehicleByIdUseCase.kt, /app/src/main/kotlin/com/example/domain/security/JwtConfig.kt, /app/src/main/kotlin/com/example/domain/security/PasswordHashInterface.kt, /app/src/main/kotlin/com/example/domain/mapping/mapping.kt, /app/src/main/kotlin/com/example/domain/mapping/mappingUser.kt, /app/src/main/kotlin/com/example/domain/repository/VehicleRepository.kt, /app/src/main/kotlin/com/example/domain/repository/UserRepository.kt, /app/src/main/kotlin/com/example/domain/models/UpdateVehicle.kt, /app/src/main/kotlin/com/example/domain/models/Vehicle.kt, /app/src/main/kotlin/com/example/domain/models/ApiUserResponse.kt, /app/src/main/kotlin/com/example/domain/models/LoginRequest.kt, /app/src/main/kotlin/com/example/domain/models/RegisterRequest.kt, /app/src/main/kotlin/com/example/domain/models/UploadImageResponse.kt, /app/src/main/kotlin/com/example/domain/models/User.kt, /app/src/main/kotlin/com/example/domain/models/UpdateUser.kt, /app/src/main/kotlin/com/example/data/security/PasswordHash.kt, /app/src/main/kotlin/com/example/data/persistence/repository/PersistenceVehicleRepository.kt, /app/src/main/kotlin/com/example/data/persistence/repository/PersistenceUserRepository.kt, /app/src/main/kotlin/com/example/data/persistence/models/UserDao.kt, /app/src/main/kotlin/com/example/data/persistence/models/VehicleTable.kt, /app/src/main/kotlin/com/example/data/persistence/models/VehicleDao.kt, /app/src/main/kotlin/com/example/data/persistence/models/FavoriteTable.kt, /app/src/main/kotlin/com/example/data/persistence/models/DatabaseTransaction.kt, /app/src/main/kotlin/com/example/data/persistence/models/UserTable.kt
+Java source files: 
+Script source files: 
+Script file extensions: 
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: /opt/java/openjdk
+
+Resolve mutations for :processResources (Thread[#68,Execution worker,5,main]) started.
+:processResources (Thread[#68,Execution worker,5,main]) started.
+
+> Task :processResources
+Caching disabled for task ':processResources' because:
+  Build cache is disabled
+  Not worth caching
+Task ':processResources' is not up-to-date because:
+  No history is available.
+file or directory '/app/build/ktor', not found
+
+> Task :compileKotlin
+i: starting the daemon as: /opt/java/openjdk/bin/java -cp /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/2.3.0/dfa7ae7e29f042fe2abf0708315aa367989bb07d/kotlin-compiler-embeddable-2.3.0.jar:/root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.3.0/ebc4eb2b6e6c91b6c844c1e3183920d86f2ef656/kotlin-stdlib-2.3.0.jar:/root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/2.3.0/fb89e0ab064ea19d08c6d6bc9f044d16c5487fc4/kotlin-script-runtime-2.3.0.jar:/root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.6.10/1cbe9c92c12a94eea200d23c2bbaedaf3daf5132/kotlin-reflect-1.6.10.jar:/root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-daemon-embeddable/2.3.0/3362fbd68a4dfd1df3818cfee0b8d5f4f6a7e35f/kotlin-daemon-embeddable-2.3.0.jar:/root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.8.0/ac1dc37a30a93150b704022f8d895ee1bd3a36b3/kotlinx-coroutines-core-jvm-1.8.0.jar:/root/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar -Djava.awt.headless=true -Djava.rmi.server.hostname=127.0.0.1 -Xmx512m -XX:MaxMetaspaceSize=384m -XX:ReservedCodeCacheSize=320m -Dkotlin.environment.keepalive -ea -XX:+UseCodeCacheFlushing -XX:+UseParallelGC -Dkotlin.daemon.initiator.marker.file=/tmp/kotlin-compiler-in-vehiculosraspi-1434821892153509998.alive --add-exports java.base/sun.nio.ch=ALL-UNNAMED org.jetbrains.kotlin.daemon.KotlinCompileDaemon --daemon-runFilesPath /root/.kotlin/daemon --daemon-autoshutdownIdleSeconds=7200 --daemon-compilerClasspath /root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/2.3.0/dfa7ae7e29f042fe2abf0708315aa367989bb07d/kotlin-compiler-embeddable-2.3.0.jar:/root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.3.0/ebc4eb2b6e6c91b6c844c1e3183920d86f2ef656/kotlin-stdlib-2.3.0.jar:/root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/2.3.0/fb89e0ab064ea19d08c6d6bc9f044d16c5487fc4/kotlin-script-runtime-2.3.0.jar:/root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.6.10/1cbe9c92c12a94eea200d23c2bbaedaf3daf5132/kotlin-reflect-1.6.10.jar:/root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-daemon-embeddable/2.3.0/3362fbd68a4dfd1df3818cfee0b8d5f4f6a7e35f/kotlin-daemon-embeddable-2.3.0.jar:/root/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.8.0/ac1dc37a30a93150b704022f8d895ee1bd3a36b3/kotlinx-coroutines-core-jvm-1.8.0.jar:/root/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar
+i: #1 retrying connecting to the daemon 
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), sourceChanges=org.jetbrains.kotlin.buildtools.api.SourcesChanges$Unknown@75d595ac, classpathChanges=NotAvailableForNonIncrementalRun, workingDir=/app/build/kotlin/compileKotlin/cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=/app/build/kotlin/compileKotlin/local-state/build-history.bin, useModuleDetection=false), icFeatures=IncrementalCompilationFeatures(usePreciseJavaTracking=true, withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false, enableMonotonousIncrementalCompileSetExpansion=true), outputFiles=[/app/build/classes/kotlin/main, /app/build/kotlin/compileKotlin/cacheable, /app/build/kotlin/compileKotlin/local-state])
+[91me: file:///app/src/main/kotlin/com/example/ktor/Routing.kt:415:10 Unresolved reference 'selectAll'.
+[0m[91me: file:///app/src/main/kotlin/com/example/ktor/Routing.kt:416:16 Unresolved reference 'it'.
+e: file:///app/src/main/kotlin/com/example/ktor/Routing.kt:416:16 Cannot infer type for type parameter 'V'. Specify it explicitly.
+e: file:///app/src/main/kotlin/com/example/ktor/Routing.kt:416:42 Unresolved reference 'value'.
+[0mFinished executing kotlin compiler using DAEMON strategy
+
+> Task :compileKotlin FAILED
+Build 70288532-534b-4a35-924a-4410c91cb1cd is closed
+[91m
+FAILURE: Build failed with an exception.
+
+[0m[91m* What went wrong:
+[0m[91mExecution failed for task ':compileKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+[0m[91mBUILD FAILED[0m[91m in 1m 32s[0m2 actionable tasks: 2 executed
+Some of the file system contents retained in the virtual file system are on file systems that Gradle doesn't support watching. The relevant state was discarded to ensure changes to these locations are properly detected. You can override this by explicitly enabling file system watching.
+[91m
+[0mThe command '/bin/sh -c ./gradlew installDist --no-daemon --info' returned a non-zero code: 1
