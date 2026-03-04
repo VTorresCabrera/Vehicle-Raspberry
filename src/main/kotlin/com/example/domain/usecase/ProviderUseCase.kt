@@ -18,10 +18,7 @@ object ProviderUseCase {
 
     // User Operations
     suspend fun insertUser(user: User): Boolean {
-        // Hash password before inserting
-        val hashed = BCrypt.hashpw(user.password, BCrypt.gensalt())
-        val userWithHash = user.copy(password = hashed)
-        return userRepository.insertUser(userWithHash)
+        return userRepository.insertUser(user)
     }
 
     suspend fun getUserById(id: String): User? {
@@ -37,13 +34,7 @@ object ProviderUseCase {
     }
 
     suspend fun updateUser(updateUser: UpdateUser, id: String): Boolean {
-        val finalUpdate = if (updateUser.password != null) {
-            val hashed = BCrypt.hashpw(updateUser.password, BCrypt.gensalt())
-            updateUser.copy(password = hashed)
-        } else {
-            updateUser
-        }
-        return userRepository.updateUser(finalUpdate, id)
+        return userRepository.updateUser(updateUser, id)
     }
 
     suspend fun deleteUser(id: String): Boolean {

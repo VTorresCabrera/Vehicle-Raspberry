@@ -1,5 +1,5 @@
 ### Variables Globales
-@baseUrl = http://localhost:8081
+@baseUrl = https://capitularly-convergent-saniya.ngrok-free.dev
 @userId = user_test
 @vehicleId = vehicle_test_v2
 
@@ -26,7 +26,7 @@ POST {{baseUrl}}/login
 Content-Type: application/json
 
 {
-  "email": "test@v2.com",
+  "email": "juan@test.com",
   "password": "password123"
 }
 
