@@ -35,6 +35,7 @@ fun Application.configureDatabases(){
         log.info ("He establecido bien la conexión")
         transaction {
             SchemaUtils.create(UserTable, VehicleTable)
+            SchemaUtils.createMissingTablesAndColumns(UserTable, VehicleTable)
         }
     }catch (e: Exception){
         log.error("Database connection failed: ${e.message}")

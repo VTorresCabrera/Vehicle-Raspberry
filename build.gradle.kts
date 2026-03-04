@@ -21,9 +21,11 @@ dependencies {
     implementation(libs.ktor.serialization.kotlinx.json)
     implementation(libs.ktor.server.host.common)
     implementation(libs.ktor.server.netty)
+    implementation(libs.ktor.server.cors)
+    implementation(libs.ktor.server.auth)
+    implementation(libs.ktor.server.auth.jwt)
     implementation(libs.logback.classic)
 
-    
     // Exposed & Database
     implementation("org.jetbrains.exposed:exposed-core:0.58.0")
     implementation("org.jetbrains.exposed:exposed-dao:0.58.0")

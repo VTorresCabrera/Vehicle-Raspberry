@@ -60,6 +60,7 @@ class PersistenceUserRepository : UserRepository {
                     updateUser.urlImage?.let { stm[urlImage] = it }
                     updateUser.active?.let { stm[active] = it }
                     updateUser.role?.let { stm[role] = it }
+                    updateUser.token?.let { stm[token] = it }
                 } > 0
             }
         } catch (e: Exception) {

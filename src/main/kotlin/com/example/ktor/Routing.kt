@@ -13,7 +13,12 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.http.content.*
 import io.ktor.server.routing.*
-
+import io.ktor.server.auth.*
+import io.ktor.http.content.PartData
+import io.ktor.http.content.forEachPart
+import io.ktor.utils.io.jvm.javaio.toInputStream
+import com.example.domain.security.JwtConfig
+import java.io.File
 fun Application.configureRouting() {
     routing {
         get("/") {
@@ -26,6 +31,31 @@ fun Application.configureRouting() {
 
         // Static plugin
         staticResources("/static", "static")
+
+        // Global Vehicles (Marketplace)
+        route("/vehicles") {
+            get {
+                call.respond(ProviderUseCase.getAllVehicles())
+            }
+            
+            get("/brand/{brand}") {
+                val brand = call.parameters["brand"] ?: return@get call.respond(HttpStatusCode.BadRequest)
+                val vehicles = ProviderUseCase.getAllVehicles().filter { 
+                    it.marca.contains(brand, ignoreCase = true) 
+                }
+                call.respond(vehicles)
+            }
+        }
+
+        get("/vehicle/{id}") {
+            val id = call.parameters["id"] ?: return@get call.respond(HttpStatusCode.BadRequest)
+            val vehicle = ProviderUseCase.getVehicleById(id)
+            if (vehicle != null) {
+                call.respond(vehicle)
+            } else {
+                call.respond(HttpStatusCode.NotFound)
+            }
+        }
 
         // LOGIN & REGISTER
         post("/login") {
@@ -40,7 +70,23 @@ fun Application.configureRouting() {
                         call.application.environment.log.info("User found: ${user.username}")
                         if (BCrypt.checkpw(password, user.password)) {
                             call.application.environment.log.info("Password match!")
-                            call.respond(user)
+                            val token = JwtConfig.generateToken(user.email)
+                                
+                            val userResponse = User(
+                                id = user.id,
+                                username = user.username,
+                                email = user.email,
+                                password = user.password,
+                                description = user.description,
+                                phone = user.phone,
+                                urlImage = user.urlImage,
+                                active = user.active,
+                                token = token,
+                                role = user.role
+                            )
+                            // Optionally update the token in DB if needed by front-end:
+                            ProviderUseCase.updateUser(UpdateUser(token = token), user.id)
+                            call.respond(userResponse)
                         } else {
                             call.application.environment.log.warn("Password mismatch for user: ${user.username}")
                             call.respond(HttpStatusCode.Unauthorized, "Invalid credentials")
@@ -77,7 +123,50 @@ fun Application.configureRouting() {
             }
         }
 
-        route("/users") {
+        // UPLOAD ENDPOINT
+        post("/upload/{id}") {
+            val dni = call.parameters["id"] ?: return@post call.respond(HttpStatusCode.BadRequest, "ID missing")
+            val user = ProviderUseCase.getUserById(dni) ?: return@post call.respond(HttpStatusCode.NotFound, "User not found")
+            
+            var imageUrl = ""
+            val uploadDir = File("upload/images/$dni")
+            if (!uploadDir.exists()) uploadDir.mkdirs()
+
+            try {
+                val multipart = call.receiveMultipart()
+                multipart.forEachPart { part ->
+                    if (part is PartData.FileItem) {
+                        val originalName = part.originalFileName ?: "image.jpg"
+                        val ext = File(originalName).extension.takeIf { it.isNotEmpty() } ?: "jpg"
+                        val fileName = "profile_${System.currentTimeMillis()}.$ext"
+                        val file = File(uploadDir, fileName)
+                        
+                        part.provider().toInputStream().use { input ->
+                            file.outputStream().buffered().use { output ->
+                                input.copyTo(output)
+                            }
+                        }
+                        // Set standard URL prefix (Ktor should serve 'upload' statically if configured, we'll map below)
+                        imageUrl = "/upload/images/$dni/$fileName"
+                    }
+                    part.dispose()
+                }
+
+                if (imageUrl.isNotEmpty()) {
+                    // Update user in DB with new imageUrl
+                    ProviderUseCase.updateUser(UpdateUser(urlImage = imageUrl), dni)
+                    call.respond(HttpStatusCode.OK, mapOf("urlImage" to imageUrl))
+                } else {
+                    call.respond(HttpStatusCode.BadRequest, "No file uploaded")
+                }
+            } catch (e: Exception) {
+                call.application.environment.log.error("Upload error: ${e.message}", e)
+                call.respond(HttpStatusCode.InternalServerError, "Error processing upload")
+            }
+        }
+
+        authenticate("auth-jwt") {
+            route("/users") {
             get {
                 call.respond(ProviderUseCase.getAllUsers())
             }
@@ -126,9 +215,9 @@ fun Application.configureRouting() {
                             return@post
                         }
                         if (ProviderUseCase.insertVehicle(vehicle)) {
-                            call.respond(HttpStatusCode.Created, "Vehicle created")
+                            call.respond(HttpStatusCode.Created, mapOf("message" to "Vehicle created"))
                         } else {
-                            call.respond(HttpStatusCode.Conflict)
+                            call.respond(HttpStatusCode.Conflict, mapOf("message" to "Conflict"))
                         }
                     } catch (e: Exception) {
                         call.respond(HttpStatusCode.BadRequest, "Invalid Vehicle data: ${e.message}")
@@ -167,9 +256,9 @@ fun Application.configureRouting() {
                          val existing = ProviderUseCase.getVehicleById(vehicleId)
                          if (existing != null && existing.userId == userId) {
                              if (ProviderUseCase.updateVehicle(update, vehicleId)) {
-                                 call.respond(HttpStatusCode.OK, "Vehicle updated")
+                                 call.respond(HttpStatusCode.OK, mapOf("message" to "Vehicle updated"))
                              } else {
-                                 call.respond(HttpStatusCode.InternalServerError)
+                                 call.respond(HttpStatusCode.InternalServerError, mapOf("message" to "Update failed"))
                              }
                          } else {
                              call.respond(HttpStatusCode.NotFound)
@@ -181,17 +270,18 @@ fun Application.configureRouting() {
                          val vehicleId = call.parameters["vehicleId"]!!
                          val existing = ProviderUseCase.getVehicleById(vehicleId)
                          if (existing != null && existing.userId == userId) {
-                              if (ProviderUseCase.deleteVehicle(vehicleId)) {
-                                  call.respond(HttpStatusCode.OK, "Vehicle deleted")
-                              } else {
-                                  call.respond(HttpStatusCode.InternalServerError)
-                              }
+                               if (ProviderUseCase.deleteVehicle(vehicleId)) {
+                                   call.respond(HttpStatusCode.OK, mapOf("message" to "Vehicle deleted"))
+                               } else {
+                                   call.respond(HttpStatusCode.InternalServerError, mapOf("message" to "Delete failed"))
+                               }
                          } else {
                              call.respond(HttpStatusCode.NotFound)
                          }
                      }
                 }
             }
+                }
         }
     }
 }

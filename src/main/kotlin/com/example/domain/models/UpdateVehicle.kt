@@ -9,5 +9,6 @@ data class UpdateVehicle(
     val precio: Double? = null,
     val kilometros: Int? = null,
     val potencia: Int? = null,
-    val imagen: String? = null
+    val imagen: String? = null,
+    val status: String? = null
 )

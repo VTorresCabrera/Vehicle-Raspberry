@@ -1,6 +1,6 @@
 ### Variables Globales
 @baseUrl = http://localhost:8081
-@userId = user_test_v2
+@userId = user_test
 @vehicleId = vehicle_test_v2
 
 ### 1. Health Check
@@ -12,8 +12,8 @@ Content-Type: application/json
 
 {
   "id": "{{userId}}",
-  "username": "UsuarioTest",
-  "email": "test@v2.com",
+  "username": "UsuarioTestV2",
+  "email": "juan@test.com",
   "password": "password123",
   "description": "Usuario de prueba para V2",
   "phone": "600123456",

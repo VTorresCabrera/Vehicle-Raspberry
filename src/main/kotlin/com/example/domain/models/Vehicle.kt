@@ -11,5 +11,6 @@ data class Vehicle(
     val kilometros: Int,
     val potencia: Int,
     val imagen: String? = null,
+    val status: String = "No publicado",
     val userId: String
 )
