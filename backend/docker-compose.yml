@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+version: '3.8'
+
+>>>>>>> 0432d501ef4bff932ba6eb5f5cf38f22e4be9939
 services:
     api:
         image: img-vehicle-api-ktor-v2:latest
@@ -29,6 +34,7 @@ services:
                 max-size: "10m"
                 max-file: "3"
 
+<<<<<<< HEAD
     db:
         image: mariadb:10.11
         container_name: ktor-mariadb
@@ -41,6 +47,16 @@ services:
             MYSQL_USER: usuario
             MYSQL_PASSWORD: usuario
             MYSQL_ROOT_PASSWORD: usuario
+=======
+        ports: 
+            - "3306:3306"
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_DATABASE: dbVehicle
+            MYSQL_USER: usuario  #usuario santi
+            MYSQL_PASSWORD: usuario #contraseña del usuario santi
+            MYSQL_ROOT_PASSWORD: usuario #contraseña del root
+>>>>>>> 0432d501ef4bff932ba6eb5f5cf38f22e4be9939
         volumes:
             - ./dump:/docker-entrypoint-initdb.d
             - ./conf:/etc/mysql/conf.d
@@ -89,4 +105,11 @@ networks:
         driver: bridge
 
 volumes:
+<<<<<<< HEAD
     persistent:
+=======
+  mariadb_data:
+
+#docker-compose down -v  para que borre también los volúmenes en el caso de que quiera volver a lanzarlo.
+#docker-compose up -d
+>>>>>>> 0432d501ef4bff932ba6eb5f5cf38f22e4be9939
