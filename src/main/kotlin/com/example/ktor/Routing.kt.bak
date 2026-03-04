@@ -20,13 +20,14 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.utils.io.jvm.javaio.toInputStream
 import org.jetbrains.exposed.dao.id.EntityID
-import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.inList
+import org.jetbrains.exposed.sql.and
+import org.jetbrains.exposed.sql.deleteWhere
+import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.select
 import org.mindrot.jbcrypt.BCrypt
 import java.io.File
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.like
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.greaterEq
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.lessEq
 
 private fun User.toApiResponse(): ApiUserResponse = ApiUserResponse(
     id = this.id,
@@ -141,13 +142,14 @@ fun Application.configureRouting() {
                     return@post
                 }
 
+                val hashed = BCrypt.hashpw(req.password, BCrypt.gensalt())
                 val token = JwtConfig.generateToken(req.email)
 
                 val user = User(
                     id = req.id,
                     username = req.username,
                     email = req.email,
-                    password = req.password,
+                    password = hashed,
                     description = req.description ?: "",
                     phone = req.phone ?: "",
                     urlImage = req.urlImage,
@@ -410,7 +412,7 @@ fun Application.configureRouting() {
 
 private suspend fun getFavoriteIds(userId: String): List<String> = suspendTransaction {
     FavoriteTable
-        .selectAll().where { FavoriteTable.user eq EntityID(userId, UserTable) }
+        .select { FavoriteTable.user eq EntityID(userId, UserTable) }
         .map { it[FavoriteTable.vehicle].value }
 }
 

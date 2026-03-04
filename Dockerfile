@@ -46,3 +46,4 @@ EXPOSE 8081
 
 # Ejecutamos el script de arranque
 CMD ["/app/bin/vehiculos-raspi"]
+

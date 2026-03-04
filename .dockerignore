@@ -1,14 +1,8 @@
 .git
 .gradle
 .idea
-<<<<<<< HEAD
 build/
 backend/
 LICENSE
 README.md
 *.md
-=======
-build
-out
-*.iml
->>>>>>> 0432d501ef4bff932ba6eb5f5cf38f22e4be9939
