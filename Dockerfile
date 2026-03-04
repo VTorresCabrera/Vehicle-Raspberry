@@ -1,5 +1,4 @@
 # Stage 1: Build
-<<<<<<< HEAD
 # Usamos una imagen base con JDK 21 que es lo que requiere el proyecto (build.gradle.kts)
 # eclipse-temurin soporta multi-arquitectura, incluyendo ARM64 (Raspberry Pi 5)
 FROM eclipse-temurin:21-jdk AS build
@@ -47,19 +46,3 @@ EXPOSE 8081
 
 # Ejecutamos el script de arranque
 CMD ["/app/bin/vehiculos-raspi"]
-
-=======
-FROM gradle:8.12-jdk21 AS build
-WORKDIR /app
-COPY . .
-RUN ./gradlew installDist --no-daemon
-
-# Stage 2: Runtime
-FROM eclipse-temurin:21-jre
-WORKDIR /app
-# the installDist task creates the executable in build/install/project-name/bin
-# we copy the entire install directory
-COPY --from=build /app/build/install/vehiculos-raspi /app
-EXPOSE 8081
-ENTRYPOINT ["/app/bin/vehiculos-raspi"]
->>>>>>> 0432d501ef4bff932ba6eb5f5cf38f22e4be9939
